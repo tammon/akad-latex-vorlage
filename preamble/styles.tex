@@ -1,0 +1,25 @@
+%% Für Codeblöcke mit Syntax-Highlighting
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/minted/
+%% Einkommentieren fuer Minted Syntax Highlighting
+%\usepackage{minted}
+%\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+\makeatother
+
+\ifassignment
+\geometry{a4paper, left=25mm, right=20mm, top=30mm, bottom=30mm}
+\else
+\geometry{a4paper, left=45mm, right=20mm, top=30mm, bottom=30mm}
+\fi
+
+\pagenumbering{roman}
+
+
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+
+\clearpairofpagestyles
+\cfoot[\pagemark]{\pagemark}
+\lehead{\headmark}
+\rohead{\headmark}
+
+\pagestyle{scrheadings}

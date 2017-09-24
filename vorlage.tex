@@ -14,138 +14,84 @@
 % Bearbeitungsdauer: 2 Monate
 
 
-\documentclass[a4paper,12pt]{article}
-\usepackage[ngerman]{babel}
-\usepackage[nottoc]{tocbibind} % Anzeigen des Literaturverzeichnisses im TOC
-\usepackage{epsfig}
-\usepackage{times}
-\usepackage{supertabular}
-\usepackage{wrapfig}
-\usepackage{multirow}
-\usepackage[onehalfspacing]{setspace}
-\usepackage{listings}
-\usepackage{mathptmx}
-\usepackage{geometry}
-\usepackage{helvet}
-\usepackage{courier}
-\usepackage{setspace}
-\usepackage{textcomp}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{fancyhdr}
-\usepackage{float} % Notwendig fuer figure[h]
-\usepackage[printonlyused]{acronym}
-% Fuer Schriftart Arial
-%\usepackage[scaled]{uarial}
-
-% Installation der Arial Schriftart unter Linux.
-% wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
-% texlua install-getnonfreefonts
-% getnonfreefonts -r
-% getnonfreefonts arial-urw
+%
+%% Document Class (Koma Script) -----------------------------------------
+%% Doc: scrguien.pdf
+\documentclass[%
+   %draft=true,     % draft mode (no images, layout errors shown)
+   draft=false,     % final mode 
+%%% --- Paper Settings ---
+   paper=a4,% [Todo: add alternatives]
+   paper=portrait, % landscape
+   pagesize=auto, % driver
+%%% --- Base Font Size ---
+   fontsize=12pt,%
+%%% --- Koma Script Version ---
+   version=last, %
+%%% --- Global Package Options ---
+   ngerman, % language (passed to babel and other packages)
+            % (ngerman, english, french, ...)
+]{scrreprt} % Classes: scrartcl, scrreprt, scrbook\usepackage[ngerman]{babel}
 
 \newif\ifappendix
 \newif\iflistoffigures
 \newif\iflistoftables
 \newif\ifacronym
 \newif\iflistofformeln
+\newif\ifassignment
+\newif\ifabschlussarbeit
 
-\include{einstellungen}
-\usepackage[
-	pdftitle={\Titel},
-	pdfsubject={Eine kurze Beschreibung, worum es geht},
-	pdfauthor={Max Mustermann},
-	pdfkeywords={akad, assignment, meta, information, pdf, hyperref, latex}
-	hyperfootnotes=false,
-	colorlinks=true,
-	linkcolor=black,
-	urlcolor=black,
-	citecolor=black
-]{hyperref}
+% Einstellungen für das Gesamtdokument
+\include{preamble/einstellungen}
 
-\newfloat{Formel}{H}{for}
-
-\renewcommand\UrlFont{\color{black}\rmfamily\itshape}
-
-\renewcommand{\familydefault}{\rmdefault}
-\renewcommand{\bflabel}[1]{\normalfont{\normalsize{#1}}\hfill}
+% Allgemeine Präambel für die Einbindung von Paketen
+\include{preamble/preamble}
 
 % Sonstige Hilfsfunktionen
-\include{commands}
+\include{preamble/commands}
 
-%% Für Codeblöcke mit Syntax-Highlighting
-%% http://www.ctan.org/tex-archive/macros/latex/contrib/minted/
-%% Einkommentieren fuer Minted Syntax Highlighting
-%\usepackage{minted}
-%\definecolor{bg}{rgb}{0.95,0.95,0.95}
+% Style Einstellungen
+\include{preamble/styles}
 
-\makeatother
-
-\geometry{a4paper, left=45mm, right=20mm, top=30mm, bottom=30mm}
-\pagenumbering{roman}
-
+% BEGIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{center}
-\thispagestyle{empty}
-\vspace{9cm}
+% TITEL PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\Huge{\Titel}
-\vspace{1cm}
-\onehalfspacing
+\input{preamble/title-page}
 
-\Large{\Betreff}
-
-\vspace{1cm}
-\Large{\Betreuer \\}
-\normalsize
-\vspace{2cm}
-
-\Name \\ \Strasse \\ \PlzOrt
-\\
-\vspace{2cm}
-
-\today
-
-Immatrikulationsnummer: \Immatrikulationsnummer
-
-\href{mailto:\Email}{\Email}
-\vspace{3cm}
-
-\includegraphics[scale=0.35]{akad_logo.png}
-
-\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
 
 \normalsize
 
-
 \begin{spacing}{1.0} % Verzeichnisse werden mit einzeiligem Abstand gesetzt
 \newpage
 
-% Inhaltsverzeichnis
+% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \tableofcontents 
 \newpage
 
-% Abbildungsverzeichnis
+% Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \iflistoffigures
 \listoffigures 
 \newpage
 \fi
 
-% Tabellenverzeichnis
+% Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \iflistoftables
 \listoftables 
 \newpage
 \fi
 
-% Abkürzungsverzeichnis
+% Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \ifacronym
-\include{abkuerzungen}
+\include{preamble/abkuerzungen}
 \fi
 
-% Formelverzeichnis
+% Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \iflistofformeln
 \listof{Formel}{Formelübersicht}
 \newpage
@@ -159,13 +105,6 @@ Immatrikulationsnummer: \Immatrikulationsnummer
 \newcounter{romanPagenumber} 
 \setcounter{romanPagenumber}{\value{page}} % Roemische Seitenanzahl speichern.
 
-
-\pagestyle{fancy}
-\fancyhead{}
-\fancyhead[LO,RE]{\textsc{\Titel}}
-\fancyhead[RO,LE]{\thepage}
-\fancyfoot[CO,CE]{}
-
 \nocite{*} 
 
 \pagenumbering{arabic}
@@ -173,16 +112,16 @@ Immatrikulationsnummer: \Immatrikulationsnummer
 \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Textteil
 
 % Einleitung
-\include{einleitung}
+\include{content/einleitung}
 
 %Grundlagen
-\include{grundlagen}
+\include{content/grundlagen}
 
 %Hauppteil
-\include{hauptteil}
+\include{content/hauptteil}
 
 %Schluss
-\include{schluss}
+\include{content/schluss}
 
 \end{spacing}
 
@@ -194,7 +133,7 @@ Immatrikulationsnummer: \Immatrikulationsnummer
 % Anhang 
 \ifappendix
 \appendix
-\input{anhang}
+\input{content/anhang}
 \clearpage
 \fi
 
@@ -236,8 +175,8 @@ Ich versichere, dass ich das beiliegende Assignment selbstst"andig verfasst, kei
 {\parbox{#1mm}{%
 \centering\footnotesize 
 %{\bf MESSBOX}\\ 
-Breite $ = #1 {\rm\ mm}$\\
-H\"ohe $ = #2 {\rm\ mm}$
+Breite $ = #1 {\ mm}$\\
+H\"ohe $ = #2 {\ mm}$
 }}}\end{picture}
 }
 

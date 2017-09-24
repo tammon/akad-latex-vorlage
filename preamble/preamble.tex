@@ -1,10 +1,30 @@
-%% Definition for Codeschnipsel im Fließtext
-\newcommand{\code}{\texttt}
+\usepackage[nottoc]{tocbibind} % Anzeigen des Literaturverzeichnisses im TOC
+\usepackage{epsfig}
+%\usepackage{times}
+\usepackage{babel}
+\usepackage{supertabular}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{listings}
+\usepackage{mathptmx}
+\usepackage{geometry}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{setspace}
+\usepackage{textcomp}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float} % Notwendig fuer figure[h]
+\usepackage[printonlyused,footnote]{acronym}
+% Fuer Schriftart Arial
+%\usepackage[scaled]{uarial}
 
-%% Todos mithilfe eines Rahmens hervorheben
-\newcommand{\todo}[1]{\fbox{\parbox{\textwidth}{\textbf{To do:} #1}}}
-
-
+% Installation der Arial Schriftart unter Linux.
+% wget http://tug.org/fonts/getnonfreefonts/install-getnonfreefonts
+% texlua install-getnonfreefonts
+% getnonfreefonts -r
+% getnonfreefonts arial-urw
 
 
 %% Einstellungen fuer Quellcode Highlighting
@@ -44,3 +64,24 @@
   title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
   belowskip= 0pt 
 }
+
+% PDF Einstellungen für Verlinkungen
+
+\usepackage[
+	pdftitle={\Titel},
+	pdfsubject={\pdfsubject},
+	pdfauthor={\Name},
+	pdfkeywords={\pdfkeywords}
+	hyperfootnotes=false,
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=black,
+	citecolor=black
+]{hyperref}
+
+\newfloat{Formel}{H}{for}
+
+\renewcommand\UrlFont{\color{black}\rmfamily\itshape}
+
+\renewcommand{\familydefault}{\rmdefault}
+\newcommand{\bflabel}[1]{\normalfont{\normalsize{#1}}\hfill}
