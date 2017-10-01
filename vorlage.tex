@@ -53,6 +53,8 @@
 % Style Einstellungen
 \include{preamble/styles}
 
+\addbibresource{literatur.bib}
+
 % BEGIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,7 +90,7 @@
 
 % Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \ifacronym
-\include{preamble/abkuerzungen}
+\include{content/abkuerzungen}
 \fi
 
 % Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
@@ -141,8 +143,9 @@
 
 \pagenumbering{roman}
 \setcounter{page}{\theromanPagenumber}
-\bibliographystyle{apalike}
-\bibliography{literatur}
+%\bibliographystyle{apalike}
+%\bibliography{literatur}
+\printbibliography
 \onehalfspacing
 \clearpage
 
