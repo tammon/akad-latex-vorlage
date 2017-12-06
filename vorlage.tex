@@ -31,7 +31,8 @@
 %%% --- Global Package Options ---
    ngerman, % language (passed to babel and other packages)
    parskip,
-   numbers=noenddot
+   numbers=noenddot,
+   bibtotoc
 ]{scrreprt} % Classes: scrartcl, scrreprt, scrbook\usepackage[ngerman]{babel}
 
 \newif\ifappendix
@@ -146,14 +147,15 @@
 \setcounter{page}{\theromanPagenumber}
 %\bibliographystyle{apalike}
 %\bibliography{literatur}
-\printbibliography
+\printbibliography[title=\prefbiblioname]
 \onehalfspacing
 \clearpage
 
 \pagestyle{empty} 
 \thispagestyle{empty}
 
-
+\ifassignment
+\else
 \begin{center}
 {\Large Eidesstattliche Erkl"arung}
 \vspace*{4cm}\end{center}
@@ -192,6 +194,7 @@ H\"ohe $ = #2 {\ mm}$
 \textbf{--- Diese Seite nach dem Druck entfernen! ---}
 \end{center}
 
+\fi
 
 \end{document}
 
