@@ -1,4 +1,9 @@
-# AKAD Latex Vorlage für ein Assignment
+# AKAD Latex Vorlage für eine wissenschaftl. Arbeit
+
+Diese LaTeX Vorlage entspricht den Richtlinien der AKAD University zur Erstellung wissenschaftlicher Arbeiten. Sie basiert auf einem Fork der akad-vorlage von derdanu, weiterentwickelt und aufgehübscht weitestgehend basierend auf den KOMA Klassen und den aktuellen LaTeX best practices. Hierdurch wurden einige obsolete Pakete gegen aktuelle ausgetauscht. Die unten stehende README ist noch aus dem Fork und damit veraltet. Bei Gelegenheit werde ich diese noch einmal updaten. Die Prinzipien sind allerdings bzgl. der Aufgaben der einzel .tex Dateien nahezu identisch geblieben.
+
+
+## ACHTUNG: Doku ist noch veraltet!
 
 Dateien
 
@@ -22,11 +27,10 @@ Dateien
 	commands.tex
 		Eigene Kommandos
 
-
 Zum Erstellen folgende Latex Kommandos ausführen:
 
 	pdflatex --shell-escape vorlage
-	bibtex vorlage
+	biber vorlage
 	pdflatex --shell-escape vorlage
 	pdflatex --shell-escape vorlage
 
