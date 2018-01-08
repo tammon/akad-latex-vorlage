@@ -21,7 +21,7 @@
    %draft=true,     % draft mode (no images, layout errors shown)
    draft=false,     % final mode 
 %%% --- Paper Settings ---
-   paper=a4,% [Todo: add alternatives]
+   paper=a4,
    paper=portrait, % landscape
    pagesize=auto, % driver
 %%% --- Base Font Size ---
@@ -32,7 +32,7 @@
    ngerman, % language (passed to babel and other packages)
    parskip,
    numbers=noenddot,
-   bibtotoc
+   bibliography=totoc
 ]{scrreprt} % Classes: scrartcl, scrreprt, scrbook\usepackage[ngerman]{babel}
 
 \newif\ifappendix
@@ -42,18 +42,21 @@
 \newif\iflistofformeln
 \newif\ifassignment
 \newif\ifabschlussarbeit
+\newif\ifglossary
 
 % Einstellungen für das Gesamtdokument
-\include{preamble/einstellungen}
+\input{preamble/einstellungen}
 
 % Allgemeine Präambel für die Einbindung von Paketen
-\include{preamble/preamble}
+\input{preamble/preamble}
 
 % Sonstige Hilfsfunktionen
-\include{preamble/commands}
+\input{preamble/commands}
 
 % Style Einstellungen
-\include{preamble/styles}
+\input{preamble/styles}
+
+\input{content/glossar}
 
 \addbibresource{literatur.bib}
 
@@ -67,32 +70,30 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage
-
 \normalsize
 
 \begin{spacing}{1.0} % Verzeichnisse werden mit einzeiligem Abstand gesetzt
-\newpage
 
 % Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\tableofcontents 
-\newpage
+\tableofcontents
 
 % Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \iflistoffigures
 \listoffigures 
-\newpage
 \fi
 
 % Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \iflistoftables
-\listoftables 
-\newpage
+\listoftables
 \fi
 
 % Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
 \ifacronym
-\include{content/abkuerzungen}
+\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
+\fi
+
+\ifglossary
+\printglossary[title=Glossar]
 \fi
 
 % Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
