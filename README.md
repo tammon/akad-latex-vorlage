@@ -1,8 +1,8 @@
-# AKAD Latex Vorlage für eine wissenschaftl. Arbeit
+# AKAD LaTeX Vorlage für eine wissenschaftliche Arbeit
 
 Diese LaTeX Vorlage entspricht den Richtlinien der AKAD University zur Erstellung wissenschaftlicher Arbeiten. Sie basiert auf einem Fork der akad-vorlage von derdanu, weiterentwickelt und aufgehübscht weitestgehend basierend auf den KOMA Klassen und den aktuellen LaTeX best practices. Hierdurch wurden einige obsolete Pakete gegen aktuelle ausgetauscht. Die unten stehende README ist noch aus dem Fork und damit veraltet. Bei Gelegenheit werde ich diese noch einmal updaten. Die Prinzipien sind allerdings bzgl. der Aufgaben der einzel .tex Dateien nahezu identisch geblieben.
 
-Dateien
+## Dateien
 
 	content/einleitung.tex 
 		Einleitung
@@ -26,10 +26,13 @@ Dateien
 	resources/
 		Platz für Bilder, PDFs, Bücher und andere Ressourcen
 
-Zum Erstellen folgende Latex Kommandos ausführen:
+## LaTeX Dokument erstellen
 
 	pdflatex --shell-escape vorlage
 	biber vorlage
 	glossaries vorlage
 	pdflatex --shell-escape vorlage
 	pdflatex --shell-escape vorlage
+
+## Credits
+Weiterentwicklung basierend auf [derdanu/akad-vorlage](https://github.com/derdanu/akad-vorlage)
