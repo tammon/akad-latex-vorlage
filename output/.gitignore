@@ -1,0 +1,4 @@
+# Ignore everything in this directory, it is meant for output of LaTeX
+*
+# Except this file
+!.gitignore

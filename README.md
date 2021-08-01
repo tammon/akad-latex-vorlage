@@ -4,6 +4,12 @@ Diese LaTeX Vorlage entspricht den Richtlinien der AKAD University zur Erstellun
 
 ## Dateien
 
+	vorlage.tex
+		Einstiegspunkt für latex compiler
+	einstellungen.tex
+		Einstellungen
+		- Benutzer
+		- Anzeige der jeweiligen Verzeichnisse
 	content/einleitung.tex 
 		Einleitung
 	content/grundlagen.tex
@@ -12,27 +18,23 @@ Diese LaTeX Vorlage entspricht den Richtlinien der AKAD University zur Erstellun
 		Hauptteil
 	content/schluss.tex
 		Schluss
+	content/abkuerzungen.tex
+		Abkürzungverzeichnis und Glossar (glossaries)
 	literatur.bib
 		Literatur in BibTex Syntax. 
 		- Zitatsgenerator http://www.literatur-generator.de/
-	content/abkuerzungen.tex
-		Abkürzungverzeichnis und Glossar (glossaries)
-	einstellungen.tex
-		Einstellungen
-		- Benutzer
-		- Anzeige der jeweiligen Verzeichnisse
 	preamble/commands.tex
 		Eigene Kommandos
 	resources/
 		Platz für Bilder, PDFs, Bücher und andere Ressourcen
+	output/
+		Zielordner für Output, sowohl Zwischenkompilate als auch fertiges PDF
 
 ## LaTeX Dokument erstellen
-
-	pdflatex --shell-escape vorlage
-	biber vorlage
-	glossaries vorlage
-	pdflatex --shell-escape vorlage
-	pdflatex --shell-escape vorlage
+	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output vorlage
+	bibtex -output-directory=output -include-directory=output vorlage
+	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output vorlage
+	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output -synctex=1 vorlage
 
 ## Credits
 Weiterentwicklung basierend auf [derdanu/akad-vorlage](https://github.com/derdanu/akad-vorlage)

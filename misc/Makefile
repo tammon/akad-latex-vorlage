@@ -20,14 +20,16 @@ endif
 
 all: $(filename).tex $(neededfiles) latex clean
 latex:
-	$(pdflatexcmd) $(filename)
-	$(bibtexcmd) $(filename)
-	$(pdflatexcmd) $(filename)
-	$(pdflatexcmd) $(filename)
+	$(pdflatexcmd) -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output $(filename)
+	$(bibtexcmd) -output-directory=output -include-directory=output $(filename)
+	# re-run pdflatex twice more to update references (page numbers can take a while to settle down)
+	$(pdflatexcmd) -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output $(filename)
+	# last run also creates synctex data in case you open this with an IDE
+	$(pdflatexcmd) -halt-on-error -interaction=errorstopmode -synctex=1 -shell-escape -output-directory=output $(filename)
 
 view:
-	if [ -f $(filename).pdf ]; then \
-		$(pdfviewercmd) $(filename).pdf; \
+	if [ -f "output/$(filename).pdf" ]; then \
+		$(pdfviewercmd) "output/$(filename).pdf"; \
 	else \
 		$(MAKE) all ;\
 		$(MAKE) view ;\
