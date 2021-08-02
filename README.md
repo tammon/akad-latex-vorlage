@@ -31,10 +31,11 @@ Diese LaTeX Vorlage entspricht den Richtlinien der AKAD University zur Erstellun
 		Zielordner für Output, sowohl Zwischenkompilate als auch fertiges PDF
 
 ## LaTeX Dokument erstellen
-	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output vorlage
-	bibtex -output-directory=output -include-directory=output vorlage
-	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output vorlage
-	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output -synctex=1 vorlage
+	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -synctex=1 -output-directory=output vorlage
+	biber output/vorlage
+	makeglossaries -d output vorlage
+	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -synctex=1 -output-directory=output vorlage
+	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -synctex=1 -output-directory=output vorlage
 
 ## Credits
 Weiterentwicklung basierend auf [derdanu/akad-vorlage](https://github.com/derdanu/akad-vorlage)

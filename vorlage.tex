@@ -32,7 +32,8 @@
    ngerman, % language (passed to babel and other packages)
    parskip,
    numbers=noenddot,
-   listof=totoc  % add lists of figures, tabvles and the glossar into Table of Contents
+   listof=totoc,        % add lists of figures and tables to Table of Contents
+   bibliography=totoc,  % add cited works to Table of Contents
 ]{scrreprt} % Classes: scrartcl, scrreprt, scrbook\usepackage[ngerman]{babel}
 
 \newif\ifappendix
@@ -157,43 +158,44 @@
 
 \ifassignment
 \else
-\begin{center}
-{\Large Eidesstattliche Erkl"arung}
-\vspace*{4cm}\end{center}
-\noindent
-Ich versichere, dass ich das beiliegende Assignment selbstst"andig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle w"ortlich oder sinngem"a"s "ubernommenen Stellen in der Arbeit gekennzeichnet habe. 
-\vspace{3cm}
+   % this is not a simple assignment but a full thesis.
+   \begin{center}
+   {\Large Eidesstattliche Erkl"arung}
+   \vspace*{4cm}\end{center}
+   \noindent
+   Ich versichere, dass ich das beiliegende Assignment selbstst"andig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle w"ortlich oder sinngem"a"s "ubernommenen Stellen in der Arbeit gekennzeichnet habe. 
+   \vspace{3cm}
 
-\hspace{-0.8cm}
-\rule[0.5ex]{6.5cm}{1pt}
-\hspace{1.3cm}
-\rule[0.5ex]{6.5cm}{1pt}
-(Datum, Ort)
-\hspace{6.3cm}(Unterschrift)
+   \hspace{-0.8cm}
+   \rule[0.5ex]{6.5cm}{1pt}
+   \hspace{1.3cm}
+   \rule[0.5ex]{6.5cm}{1pt}
+   (Datum, Ort)
+   \hspace{6.3cm}(Unterschrift)
 
-\clearpage
+   \clearpage
 
-%Messbox zur Druckkontrolle:
-\newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
-\setlength{\unitlength}{1.0mm}%
-\begin{picture}(#1,#2)%
-\linethickness{0.05mm}%
-\put(0,0){\dashbox{0.2}(#1,#2)%
-{\parbox{#1mm}{%
-\centering\footnotesize 
-%{\bf MESSBOX}\\ 
-Breite $ = #1 {\ mm}$\\
-H\"ohe $ = #2 {\ mm}$
-}}}\end{picture}
-}
+   %Messbox zur Druckkontrolle:
+   \newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
+   \setlength{\unitlength}{1.0mm}%
+   \begin{picture}(#1,#2)%
+   \linethickness{0.05mm}%
+   \put(0,0){\dashbox{0.2}(#1,#2)%
+   {\parbox{#1mm}{%
+   \centering\footnotesize 
+   %{\bf MESSBOX}\\ 
+   Breite $ = #1 {\ mm}$\\
+   H\"ohe $ = #2 {\ mm}$
+   }}}\end{picture}
+   }
 
-\begin{center}
-\textbf{--- Druckgröße kontrollieren! ---}
-\\
-\Messbox{100}{50} % Angabe der Breite/Hoehe in mm
-\\
-\textbf{--- Diese Seite nach dem Druck entfernen! ---}
-\end{center}
+   \begin{center}
+   \textbf{--- Druckgröße kontrollieren! ---}
+   \\
+   \Messbox{100}{50} % Angabe der Breite/Hoehe in mm
+   \\
+   \textbf{--- Diese Seite nach dem Druck entfernen! ---}
+   \end{center}
 
 \fi
 

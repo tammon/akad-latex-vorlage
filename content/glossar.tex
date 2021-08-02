@@ -1,11 +1,16 @@
 \newacronym{url}{URL}{Uniform Resource Locator}
 \newacronym{css}{CSS}{Cascading Style Sheets}
 \newacronym{mituni}{MIT}{Massachusetts Institute of Technology}
-\newacronym{abk}{Abk}{Abkürzung}
-\newacronym{Abk}{Abk}{Abkürzung}
+\newacronym[plural=Abk,firstplural=Abkürzungen (Abk)]{abk}{Abk}{Abkürzung} % this shows how to define plurals for German words. Default is to just append s, which is fine for English and for acronyms, so we keep that default.
 
+% just like in cited sources, any acronyms or terminology not actually used in the text will not be displayed in the final PDF, so you can add any terms you think you will need..
 \newglossaryentry{pi}{
-name=$\pi$,
-description={Die Kreiszahl},
-sort=Pi
+    name=$\pi$,
+    description={Die Kreiszahl},
+    sort=Pi
+}
+\newglossaryentry{lorem}{
+    name=Lorem Ipsum,
+    description={Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.},
+    sort=Lorem Ipsum
 }

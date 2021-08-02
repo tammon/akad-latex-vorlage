@@ -7,25 +7,28 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
 	pdflatexcmd = pdflatex --shell-escape
-	bibtexcmd = bibtex
+	bibercmd = biber
+	makeglossariescmd = makeglossaries
 	pdfviewercmd = atril
 endif
 
 ifeq ($(UNAME_S), Darwin)
 	pdflatexcmd = /usr/texbin/pdflatex --shell-escape
-	bibtexcmd = /usr/texbin/bibtex
+	bibercmd = /usr/texbin/biber
+	makeglossaries = /usr/texbin/makeglossaries
 	pdfviewercmd = open
 endif
 
 
 all: $(filename).tex $(neededfiles) latex clean
 latex:
-	$(pdflatexcmd) -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output $(filename)
-	$(bibtexcmd) -output-directory=output -include-directory=output $(filename)
+	$(pdflatexcmd) -halt-on-error -interaction=nonstopmode -shell-escape -synctex=1 -output-directory=output $(filename)
+	$(bibercmd) output/$(filename)
+	$(makeglossariescmd) -d output $(filename)
 	# re-run pdflatex twice more to update references (page numbers can take a while to settle down)
-	$(pdflatexcmd) -halt-on-error -interaction=errorstopmode -shell-escape -output-directory=output $(filename)
+	$(pdflatexcmd) -halt-on-error -interaction=nonstopmode -shell-escape -synctex=1 -output-directory=output $(filename)
 	# last run also creates synctex data in case you open this with an IDE
-	$(pdflatexcmd) -halt-on-error -interaction=errorstopmode -synctex=1 -shell-escape -output-directory=output $(filename)
+	$(pdflatexcmd) -halt-on-error -interaction=nonstopmode -shell-escape -synctex=1 -output-directory=output $(filename)
 
 view:
 	if [ -f "output/$(filename).pdf" ]; then \
