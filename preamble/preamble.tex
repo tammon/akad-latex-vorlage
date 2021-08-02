@@ -1,6 +1,6 @@
-\usepackage[nottoc]{tocbibind} % Anzeigen des Literaturverzeichnisses im TOC
-\usepackage{epsfig}
-%\usepackage{times}
+% dummy comment for file-wide intellisense errors
+%\usepackage{graphicx} % enables use of eps graphics (encapsulated PostScript). Activate if needed.
+%\usepackage{newtx} % replacement of previously used "times" package (using Times font as default)
 \usepackage{babel}
 \usepackage{supertabular}
 \usepackage{wrapfig}
@@ -17,7 +17,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float} % Notwendig fuer figure[h]
 \usepackage[german=quotes]{csquotes}
-\usepackage[style=alphabetic]{biblatex} % alternative: iso-authoryear
+\usepackage[style=alphabetic]{biblatex} % alternative for sort: iso-authoryear
 \usepackage{pdfpages}
 % Fuer Schriftart Arial
 %\usepackage[scaled]{uarial}
@@ -103,7 +103,7 @@
 %	style=altlist,
 	nopostdot, % löscht den schlusspunkt nach jeder description
 ]{glossaries}
-\glossarystyle{super}
+\setglossarystyle{super}
 \makeglossaries % Glossar generieren
 
 \newfloat{Formel}{H}{for}
