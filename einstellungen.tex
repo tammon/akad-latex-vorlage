@@ -1,70 +1,77 @@
+% Hinweis: Wenn diese Arbeit in einem git repository geschrieben und auf github gesichert wird, besteht die Gefahr,
+%          persönliche Daten (insbesondere Adresse und Matrikelnummer) unabsichtlich zu veröffentlichen.
+% Um dies zu verhindern, sollten kritische Daten in einer oder mehreren separaten Dateien namens "secrets.tex" gesetzt werden (einfach von unten dorthin kopieren, einstellungen.tex muss nicht verändert werden).
+% Diese können entweder im Projektverzeichnis selbst liegen, im Verzeichnis direkt darüber, oder im HOME-Verzeichnis ($HOME oder %USERPROFILE%).
+% Es kann gemischt werden (z.B. Adresse in HOME, Studiengang im Projekt selbst), der jeweils zuerst gesetzte Wert hat Vorrang:
+\IfFileExists{secrets.tex}{\input{secrets.tex}}{}                   % im Projekt-Ordner selbst (leicht zu packen/sichern/transferieren des Projekts, besonders für Dinge wie Titel und Thema des assignments)
+\IfFileExists{../secrets.tex}{\input{../secrets.tex}}{}             % direkt oberhalb des Projekt-Ordners (gültig für mehrere nebeneinander liegende Assignments, daher besonders für unveränderliche Daten wie Adresse)
+\IfFileExists{\string~/secrets.tex}{\input{\string~/secrets.tex}}{} % aus HOME Verzeichnis (gültig für alle Assignments auf dem Rechner egal wo sie liegen)
+% Im Folgenden nun die defaults für alle Werte, die nicht in einer der secrets.tex Dateien gesetzt wurden:
+
+
 %%% Themenbezogene Daten (bei jedem neuen Assignment zu aktualisieren):
 
 %Titel
-\newcommand*{\Titel}{Thema des Assignments}
+\providecommand*{\Titel}{Thema des Assignments}
 
 %PDF Beschreibung
-\newcommand*{\pdfsubject}{Eine kurze Beschreibung, worum es geht}
+\providecommand*{\pdfsubject}{Eine kurze Beschreibung, worum es geht}
 
 %Betreff
-\newcommand*{\Arbeitstyp}{Assignment im Modul ABC01}
+\providecommand*{\Arbeitstyp}{Assignment im Modul ABC01}
 
 %Betreuer
-\newcommand*{\Betreuer}{Prof. Dr. Mustermann}
+\providecommand*{\Betreuer}{Prof. Dr. Mustermann}
 
 %Bearbeitungszeit
-\newcommand*{\Bearbeitungszeit}{8 Wochen}
+\providecommand*{\Bearbeitungszeit}{8 Wochen}
 
 %PDF Keywords
-\newcommand*{\pdfkeywords}{akad, assignment, meta, information, pdf, hyperref, latex}
+\providecommand*{\pdfkeywords}{akad, assignment, meta, information, pdf, hyperref, latex}
 
-%%% personenbezogene Daten (bleiben gleich von Assignment zu Assignment):
+
+
+%%% personenbezogene Daten (bleiben gleich von Assignment zu Assignment, sollten vorzugsweise in secrets.tex gesetzt werden, siehe unten):
 
 %Vor- und Nachname
-\newcommand*{\Name}{Max Mustermann}
+\providecommand*{\Name}{Max Mustermann}
 
 %Straße und Hausnummer
-\newcommand*{\Strasse}{Musterstr. 1a} 
+\providecommand*{\Strasse}{Musterstr. 1a} 
 
 %Plz und Ort
-\newcommand*{\PlzOrt}{12345 Musterhausen} 
+\providecommand*{\PlzOrt}{12345 Musterhausen} 
 
 %Email 
-\newcommand*{\Email}{max.mustermann@akad.de} 
+\providecommand*{\Email}{max.mustermann@akad.de} 
 
 %Immatrikulationsnummer
-\newcommand*{\Immatrikulationsnummer}{123456}
+\providecommand*{\Immatrikulationsnummer}{123456}
 
 %Studiengang
-\newcommand*{\Studiengang}{IT-Management}
+\providecommand*{\Studiengang}{IT-Management}
 
 %Akademischer Grad
-\newcommand*{\Grad}{Master of Science (M. Sc.)} 
-%\newcommand*{\Grad}{Master of Engineering (M. Eng.)} 
-%\newcommand*{\Grad}{Bachelor of Science (B. Sc.)} 
-%\newcommand*{\Grad}{Bachelor of Engineering (B. Eng.)} 
+\providecommand*{\Grad}{Master of Science (M. Sc.)} 
+%\providecommand*{\Grad}{Master of Engineering (M. Eng.)} 
+%\providecommand*{\Grad}{Bachelor of Science (B. Sc.)} 
+%\providecommand*{\Grad}{Bachelor of Engineering (B. Eng.)} 
 
-%Überschrift des Literaturverzeichnisses
-\newcommand*{\prefbiblioname}{Literaturverzeichnis}
 
-%%% Nicht benötigte Zeilen mit % auskommentieren oder löschen:
 
-%% Anhang 
-\appendixtrue
+%%% generelle Einstellungen zur Darstellungsform
+% Überschrift des Literaturverzeichnisses
+\providecommand*{\prefbiblioname}{Literaturverzeichnis}
 
-%% Verzeichnisse 
-%
-%% Abbildungsverzeichnis 
-\listoffigurestrue
-%% Tabellenverzeichnis
-\listoftablestrue
-%% Abkürzungsverzeichnis
-\acronymtrue
-%% Glossar
-\glossarytrue
+%% Nicht benötigte Zeilen mit % auskommentieren oder löschen:
 
-%% Formelverzeichnis
-%\listofformelntrue
+%% darzustellende Verzeichnisse (können nicht in secrets.tex überschrieben werden):
+\listoffigurestrue  %% Abbildungsverzeichnis 
+\listoftablestrue   %% Tabellenverzeichnis
+\acronymtrue        %% Abkürzungsverzeichnis
+\glossarytrue       %% Glossar
+% \listofformelntrue  %% Formelverzeichnis
+\appendixtrue       %% Anhang
 
 %% Diese Vorlage wird für ein Assignment benutzt (statt für eine Abschlussarbeit)
 \assignmenttrue

@@ -1,0 +1,2 @@
+# ignore secrets.tex if user added one so personal information doesn't get leaked to github
+secrets.tex
