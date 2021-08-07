@@ -36,6 +36,7 @@
    bibliography=totoc,  % add cited works to Table of Contents
 ]{scrreprt} % Classes: scrartcl, scrreprt, scrbook\usepackage[ngerman]{babel}
 
+\newif\ifsperrvermerk
 \newif\ifappendix
 \newif\iflistoffigures
 \newif\iflistoftables
@@ -72,6 +73,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \normalsize
+
+\ifsperrvermerk
+   % this work contains restricted information (usually company-internal information)
+   \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Sperrvermerk
+      \begin{center}
+         {\Large Sperrvermerk}
+         \vspace*{4cm}
+      \end{center}
+      \noindent
+      \SperrvermerkBausteinEins{} enthält vertrauliche Daten der \Firma. Veröffentlichungen oder Vervielfältigungen \SperrvermerkBausteinZwei{} -- auch nur ansatzweise -- sind ohne ausdrückliche Genehmigung der Geschäftsleitung der \Firma{} nicht gestattet. \SperrvermerkBausteinDrei{} ist nur den Gutachtern sowie den Mitgliedern des Prüfungsausschusses zugänglich zu machen.
+   \end{spacing}
+   \clearpage
+\fi
 
 \begin{spacing}{1.0} % Verzeichnisse werden mit einzeiligem Abstand gesetzt
 
