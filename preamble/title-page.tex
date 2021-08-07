@@ -5,7 +5,7 @@
 
 \Large{\textbf{\Titel}}
 \vfill
-\onehalfspacing
+\onehalfspacing{}
 
 \large{\Arbeitstyp}
 
@@ -19,14 +19,14 @@ von
 \normalsize
 \vfill
 
-\ifassignment
+\ifassignment{}
 \else
-	Zur Erlangung des akademischen Grades \\
-	\textbf{\Grad}
-	\vfill
+    Zur Erlangung des akademischen Grades \\
+    \textbf{\Grad}
+    \vfill
 \fi
 
-Im Studiengang \Studiengang \\
+Im Studiengang \Studiengang{} \\
 an der staatlich anerkannten AKAD Hochschule Stuttgart
 
 \vfill
@@ -43,14 +43,14 @@ an der staatlich anerkannten AKAD Hochschule Stuttgart
 \vfill
 \begin{spacing}{1.2}
     \begin{tabbing}
-	    \hspace{9cm}     \= \kill
-	    \textbf{Bearbeitungszeit}  \>  \Bearbeitungszeit \\
-	    \textbf{Betreuer}              \>  \Betreuer \\
-	    \textbf{Immatrikulationsnummer}  \>  \Immatrikulationsnummer \\
-	    \textbf{E-Mail}		\> \href{mailto:\Email}{\Email} \\
-	    \textbf{Adresse}		\> \Strasse \\
-	    		\> \PlzOrt
-	\end{tabbing}
+        \hspace{9cm}     \= \kill
+        \textbf{Bearbeitungszeit}       \>  \Bearbeitungszeit{} \\
+        \textbf{Betreuer}               \>  \Betreuer{} \\
+        \textbf{Immatrikulationsnummer} \>  \Immatrikulationsnummer{} \\
+        \textbf{E-Mail}                 \> \href{mailto:\Email}{\Email} \\
+        \textbf{Adresse}                \> \Strasse{} \\
+                                        \> \PlzOrt{}
+    \end{tabbing}
 \end{spacing}
-\restoregeometry
+\restoregeometry{}
 \end{titlepage}

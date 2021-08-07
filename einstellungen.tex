@@ -3,9 +3,9 @@
 % Um dies zu verhindern, sollten kritische Daten in einer oder mehreren separaten Dateien namens "secrets.tex" gesetzt werden (einfach von unten dorthin kopieren, einstellungen.tex muss nicht verändert werden).
 % Diese können entweder im Projektverzeichnis selbst liegen, im Verzeichnis direkt darüber, oder im HOME-Verzeichnis ($HOME oder %USERPROFILE%).
 % Es kann gemischt werden (z.B. Adresse in HOME, Studiengang im Projekt selbst), der jeweils zuerst gesetzte Wert hat Vorrang:
-\IfFileExists{secrets.tex}{\input{secrets.tex}}{}                   % im Projekt-Ordner selbst (leicht zu packen/sichern/transferieren des Projekts, besonders für Dinge wie Titel und Thema des assignments)
-\IfFileExists{../secrets.tex}{\input{../secrets.tex}}{}             % direkt oberhalb des Projekt-Ordners (gültig für mehrere nebeneinander liegende Assignments, daher besonders für unveränderliche Daten wie Adresse)
-\IfFileExists{\string~/secrets.tex}{\input{\string~/secrets.tex}}{} % aus HOME Verzeichnis (gültig für alle Assignments auf dem Rechner egal wo sie liegen)
+\IfFileExists{secrets.tex}{\input{secrets.tex}}{}                   % im Projekt-Ordner selbst (leicht zu packen/sichern/transferieren des Projekts, besonders für Dinge wie Titel und Thema des assignments)       % chktex 27 chktex tries to run this regardless of file existance
+\IfFileExists{../secrets.tex}{\input{../secrets.tex}}{}             % direkt oberhalb des Projekt-Ordners (gültig für mehrere nebeneinander liegende Assignments, daher besonders für unveränderliche Daten wie Adresse)       % chktex 27 chktex tries to run this regardless of file existance
+\IfFileExists{\string~/secrets.tex}{\input{\string~/secrets.tex}}{} % aus HOME Verzeichnis (gültig für alle Assignments auf dem Rechner egal wo sie liegen)       % chktex 27 chktex tries to run this regardless of file existance
 % Im Folgenden nun die defaults für alle Werte, die nicht in einer der secrets.tex Dateien gesetzt wurden:
 
 
@@ -21,10 +21,10 @@
 \providecommand*{\Arbeitstyp}{Assignment im Modul ABC01}
 
 %Betreuer
-\providecommand*{\Betreuer}{Prof. Dr. Mustermann}
+\providecommand*{\Betreuer}{Prof.~Dr.~Mustermann}
 
 %Firma, in der die Arbeit absolviert wurde (für Sperrvermerk)
-\providecommand*{\Firma}{Mustermann AG}
+\providecommand*{\Firma}{Mustermann~AG}
 
 %Bearbeitungszeit
 \providecommand*{\Bearbeitungszeit}{8 Wochen}
@@ -40,13 +40,13 @@
 \providecommand*{\Name}{Max Mustermann}
 
 %Straße und Hausnummer
-\providecommand*{\Strasse}{Musterstr. 1a} 
+\providecommand*{\Strasse}{Musterstr.~1a}
 
 %Plz und Ort
-\providecommand*{\PlzOrt}{12345 Musterhausen} 
+\providecommand*{\PlzOrt}{12345 Musterhausen}
 
-%Email 
-\providecommand*{\Email}{max.mustermann@akad.de} 
+%Email
+\providecommand*{\Email}{max.mustermann@akad.de}
 
 %Immatrikulationsnummer
 \providecommand*{\Immatrikulationsnummer}{123456}
@@ -55,10 +55,10 @@
 \providecommand*{\Studiengang}{IT-Management}
 
 %Akademischer Grad
-\providecommand*{\Grad}{Master of Science (M. Sc.)} 
-%\providecommand*{\Grad}{Master of Engineering (M. Eng.)} 
-%\providecommand*{\Grad}{Bachelor of Science (B. Sc.)} 
-%\providecommand*{\Grad}{Bachelor of Engineering (B. Eng.)} 
+\providecommand*{\Grad}{Master~of~Science~(M.~Sc.)}
+%\providecommand*{\Grad}{Master~of~Engineering~(M.~Eng.)}
+%\providecommand*{\Grad}{Bachelor~of~Science~(B.~Sc.)}
+%\providecommand*{\Grad}{Bachelor~of~Engineering~(B.~Eng.)}
 
 
 
@@ -69,15 +69,15 @@
 %% Nicht benötigte Zeilen mit % auskommentieren oder löschen:
 
 %% darzustellende Verzeichnisse (können nicht in secrets.tex überschrieben werden):
-\listoffigurestrue  %% Abbildungsverzeichnis 
-\listoftablestrue   %% Tabellenverzeichnis
-\acronymtrue        %% Abkürzungsverzeichnis
-\glossarytrue       %% Glossar
-% \listofformelntrue  %% Formelverzeichnis
-\appendixtrue       %% Anhang
+\listoffigurestrue{} %% Abbildungsverzeichnis
+\listoftablestrue{}  %% Tabellenverzeichnis
+\acronymtrue{}       %% Abkürzungsverzeichnis
+\glossarytrue{}      %% Glossar
+% \listofformelntrue{} %% Formelverzeichnis
+\appendixtrue{}      %% Anhang
 
 %% Diese Vorlage wird für ein Assignment benutzt (statt für eine Abschlussarbeit)
-\assignmenttrue
+\assignmenttrue{}
 
 %% dieser Bericht beinhaltelt sensible Firmendaten und benötigt einen Sperrvermerk:
 %\sperrvermerktrue
@@ -90,6 +90,6 @@
 %\providecommand*{\SperrvermerkGrad}{Diplom}
 %\providecommand*{\SperrvermerkGrad}{Master}
 %\providecommand*{\SperrvermerkGrad}{Bachelor}
-%\providecommand*{\SperrvermerkBausteinEins}{Die nachfolgende \SperrvermerkGrad-Arbeit}
-%\providecommand*{\SperrvermerkBausteinZwei}{der \SperrvermerkGrad-Arbeit}
-%\providecommand*{\SperrvermerkBausteinDrei}{Die \SperrvermerkGrad-Arbeit}
+%\providecommand*{\SperrvermerkBausteinEins}{Die nachfolgende \SperrvermerkGrad{}-Arbeit}
+%\providecommand*{\SperrvermerkBausteinZwei}{der \SperrvermerkGrad{}-Arbeit}
+%\providecommand*{\SperrvermerkBausteinDrei}{Die \SperrvermerkGrad{}-Arbeit}

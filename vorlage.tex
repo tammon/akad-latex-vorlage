@@ -25,7 +25,7 @@
 %% Doc: scrguien.pdf
 \documentclass[%
    %draft=true,     % draft mode (no images, layout errors shown)
-   draft=false,     % final mode 
+   draft=false,     % final mode
 %%% --- Paper Settings ---
    paper=a4,
    paper=portrait, % landscape
@@ -42,15 +42,15 @@
    bibliography=totoc,  % add cited works to Table of Contents
 ]{scrreprt} % Classes: scrartcl, scrreprt, scrbook\usepackage[ngerman]{babel}
 
-\newif\ifsperrvermerk
-\newif\ifappendix
-\newif\iflistoffigures
-\newif\iflistoftables
-\newif\ifacronym
-\newif\iflistofformeln
-\newif\ifassignment
-\newif\ifabschlussarbeit
-\newif\ifglossary
+\newif\ifsperrvermerk{}
+\newif\ifappendix{}
+\newif\iflistoffigures{}
+\newif\iflistoftables{}
+\newif\ifacronym{}
+\newif\iflistofformeln{}
+\newif\ifassignment{}
+\newif\ifabschlussarbeit{}
+\newif\ifglossary{}
 
 % Einstellungen für das Gesamtdokument
 \input{einstellungen}
@@ -80,7 +80,7 @@
 
 \normalsize
 
-\ifsperrvermerk
+\ifsperrvermerk{}
    % this work contains restricted information (usually company-internal information)
    \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Sperrvermerk
       \begin{center}
@@ -99,36 +99,36 @@
 \tableofcontents
 
 % Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistoffigures
-\listoffigures 
+\iflistoffigures{}
+\listoffigures
 \fi
 
 % Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistoftables
+\iflistoftables{}
 \listoftables
 \fi
 
 % Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\ifacronym
+\ifacronym{}
 \printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
 \fi
 
-\ifglossary
+\ifglossary{}
 \printglossary[title=Glossar]
 \fi
 
 % Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistofformeln
+\iflistofformeln{}
 \listof{Formel}{Formelübersicht}
 \newpage
 \fi
 
 
-\end{spacing} 
+\end{spacing}
 
 \clearpage
 
-\newcounter{romanPagenumber} 
+\newcounter{romanPagenumber}
 \setcounter{romanPagenumber}{\value{page}} % Roemische Seitenanzahl speichern.
 
 % \nocite{*} % enable this if you want to list all your literature, even if it wasn't actually cited in your text
@@ -156,8 +156,8 @@
 \pagestyle{plain}
 
 
-% Anhang 
-\ifappendix
+% Anhang
+\ifappendix{}
 \appendix
 \input{content/anhang}
 \clearpage
@@ -170,25 +170,25 @@
 %\bibliographystyle{apalike}
 %\bibliography{literatur}
 \printbibliography[title=\prefbiblioname]
-\onehalfspacing
+\onehalfspacing{}
 \clearpage
 
-\pagestyle{empty} 
+\pagestyle{empty}
 \thispagestyle{empty}
 
-\ifassignment
+\ifassignment{}
 \else
    % this is not a simple assignment but a full thesis.
    \begin{center}
-   {\Large Eidesstattliche Erkl"arung}
+   {\Large Eidesstattliche Erklärung}
    \vspace*{4cm}\end{center}
    \noindent
-   Ich versichere, dass ich die beiliegende Arbeit selbstst"andig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle w"ortlich oder sinngem"a"s "ubernommenen Stellen in der Arbeit gekennzeichnet habe. 
+   Ich versichere, dass ich die beiliegende Arbeit selbstständig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle wörtlich oder sinngemäß übernommenen Stellen in der Arbeit gekennzeichnet habe.
    \vspace{3cm}
 
    \rule[0.5ex]{6.5cm}{1pt}\hfill\rule[0.5ex]{6.5cm}{1pt}
    \\
-   \hspace*{0.8cm}(Datum, Ort)\hfill(Unterschrift)\hspace*{6.5cm-\widthof{(Unterschrift)}-0.8cm}
+   \hspace*{0.5cm} (Datum, Ort) \hfill (Unterschrift) \hspace*{6.5cm-\widthof{ (Unterschrift) }-0.5cm}
 
    \clearpage
 
@@ -199,10 +199,10 @@
    \linethickness{0.05mm}%
    \put(0,0){\dashbox{0.2}(#1,#2)%
    {\parbox{#1mm}{%
-   \centering\footnotesize 
-   %{\bf MESSBOX}\\ 
+   \centering\footnotesize
+   %{\bf MESSBOX}\\
    Breite $ = #1 {\ mm}$\\
-   H\"ohe $ = #2 {\ mm}$
+   Höhe $ = #2 {\ mm}$
    }}}\end{picture}
    }
 
@@ -217,4 +217,4 @@
 \fi
 
 \end{document}
-
+% chktex 17 ignore deliberately unmatched numnber of parentheses (there's a single ')' in the preamble)
