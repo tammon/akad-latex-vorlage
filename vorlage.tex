@@ -80,48 +80,48 @@
 
 \normalsize
 
-\ifsperrvermerk{}
-   % this work contains restricted information (usually company-internal information)
-   \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Sperrvermerk
-      \begin{center}
-         {\Large Sperrvermerk}
-         \vspace*{4cm}
-      \end{center}
-      \noindent
-      \SperrvermerkBausteinEins{} enthält vertrauliche Daten der \Firma. Veröffentlichungen oder Vervielfältigungen \SperrvermerkBausteinZwei{} -- auch nur ansatzweise -- sind ohne ausdrückliche Genehmigung der Geschäftsleitung der \Firma{} nicht gestattet. \SperrvermerkBausteinDrei{} ist nur den Gutachtern sowie den Mitgliedern des Prüfungsausschusses zugänglich zu machen.
-   \end{spacing}
-   \clearpage
+\ifsperrvermerk       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+  % this work contains restricted information (usually company-internal information)
+  \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Sperrvermerk
+    \begin{center}
+      {\Large Sperrvermerk}
+      \vspace*{4cm}
+    \end{center}
+    \noindent
+    \SperrvermerkBausteinEins{} enthält vertrauliche Daten der \Firma. Veröffentlichungen oder Vervielfältigungen \SperrvermerkBausteinZwei{} -- auch nur ansatzweise -- sind ohne ausdrückliche Genehmigung der Geschäftsleitung der \Firma{} nicht gestattet. \SperrvermerkBausteinDrei{} ist nur den Gutachtern sowie den Mitgliedern des Prüfungsausschusses zugänglich zu machen.
+  \end{spacing}
+  \clearpage
 \fi
 
 \begin{spacing}{1.0} % Verzeichnisse werden mit einzeiligem Abstand gesetzt
 
-% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\tableofcontents
+  % Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \tableofcontents
 
-% Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistoffigures{}
-\listoffigures
-\fi
+  % Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \iflistoffigures       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+    \listoffigures
+  \fi
 
-% Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistoftables{}
-\listoftables
-\fi
+  % Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \iflistoftables       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+    \listoftables
+  \fi
 
-% Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\ifacronym{}
-\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
-\fi
+  % Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \ifacronym       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+    \printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
+  \fi
 
-\ifglossary{}
-\printglossary[title=Glossar]
-\fi
+  \ifglossary       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+    \printglossary[title=Glossar]
+  \fi
 
-% Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistofformeln{}
-\listof{Formel}{Formelübersicht}
-\newpage
-\fi
+  % Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \iflistofformeln       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+    \listof{Formel}{Formelübersicht}
+    \newpage
+  \fi
 
 
 \end{spacing}
@@ -137,17 +137,17 @@
 
 \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Textteil
 
-% Einleitung
-\include{content/einleitung}
+  % Einleitung
+  \include{content/einleitung}
 
-%Grundlagen
-\include{content/grundlagen}
+  %Grundlagen
+  \include{content/grundlagen}
 
-%Hauppteil
-\include{content/hauptteil}
+  %Hauppteil
+  \include{content/hauptteil}
 
-%Schluss
-\include{content/schluss}
+  %Schluss
+  \include{content/schluss}
 
 \end{spacing}
 
@@ -157,10 +157,10 @@
 
 
 % Anhang
-\ifappendix{}
-\appendix
-\input{content/anhang}
-\clearpage
+\ifappendix       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+  \appendix
+  \input{content/anhang}
+  \clearpage
 \fi
 
 % Literaturverzeichniss - Ab hier wieder Roemische Seitenzahlen
@@ -176,43 +176,43 @@
 \pagestyle{empty}
 \thispagestyle{empty}
 
-\ifassignment{}
+\ifassignment       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
 \else
-   % this is not a simple assignment but a full thesis.
-   \begin{center}
-   {\Large Eidesstattliche Erklärung}
-   \vspace*{4cm}\end{center}
-   \noindent
-   Ich versichere, dass ich die beiliegende Arbeit selbstständig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle wörtlich oder sinngemäß übernommenen Stellen in der Arbeit gekennzeichnet habe.
-   \vspace{3cm}
+  % this is not a simple assignment but a full thesis.
+  \begin{center}
+    {\Large Eidesstattliche Erklärung}
+    \vspace*{4cm}\end{center}
+  \noindent
+  Ich versichere, dass ich die beiliegende Arbeit selbstständig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle wörtlich oder sinngemäß übernommenen Stellen in der Arbeit gekennzeichnet habe.
+  \vspace{3cm}
 
-   \rule[0.5ex]{6.5cm}{1pt}\hfill\rule[0.5ex]{6.5cm}{1pt}
-   \\
-   \hspace*{0.5cm} (Datum, Ort) \hfill (Unterschrift) \hspace*{6.5cm-\widthof{ (Unterschrift) }-0.5cm}
+  \rule[0.5ex]{6.5cm}{1pt}\hfill\rule[0.5ex]{6.5cm}{1pt}
+  \\
+  \hspace*{0.5cm} (Datum, Ort) \hfill (Unterschrift) \hspace*{6.5cm-\widthof{ (Unterschrift) }-0.5cm}
 
-   \clearpage
+  \clearpage
 
-   %Messbox zur Druckkontrolle:
-   \newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
-   \setlength{\unitlength}{1.0mm}%
-   \begin{picture}(#1,#2)%
-   \linethickness{0.05mm}%
-   \put(0,0){\dashbox{0.2}(#1,#2)%
-   {\parbox{#1mm}{%
-   \centering\footnotesize
-   %{\bf MESSBOX}\\
-   Breite $ = #1 {\ mm}$\\
-   Höhe $ = #2 {\ mm}$
-   }}}\end{picture}
-   }
+  %Messbox zur Druckkontrolle:
+  \newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
+    \setlength{\unitlength}{1.0mm}%
+    \begin{picture}(#1,#2)%
+      \linethickness{0.05mm}%
+      \put(0,0){\dashbox{0.2}(#1,#2)%
+      {\parbox{#1mm}{%
+      \centering\footnotesize
+      %{\bf MESSBOX}\\
+      Breite $ = #1 {\ mm}$\\
+      Höhe $ = #2 {\ mm}$
+      }}}\end{picture}
+  }
 
-   \begin{center}
-   \textbf{--- Druckgröße kontrollieren! ---}
-   \\
-   \Messbox{100}{50} % Angabe der Breite/Hoehe in mm
-   \\
-   \textbf{--- Diese Seite nach dem Druck entfernen! ---}
-   \end{center}
+  \begin{center}
+    \textbf{--- Druckgröße kontrollieren! ---}
+    \\
+    \Messbox{100}{50} % Angabe der Breite/Hoehe in mm
+    \\
+    \textbf{--- Diese Seite nach dem Druck entfernen! ---}
+  \end{center}
 
 \fi
 

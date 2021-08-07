@@ -1,56 +1,56 @@
 \begin{titlepage}
-\newgeometry{left=25mm, right=20mm, top=35mm, bottom=30mm}
-\begin{center}
-\thispagestyle{empty}
+  \newgeometry{left=25mm, right=20mm, top=35mm, bottom=30mm}
+  \begin{center}
+    \thispagestyle{empty}
 
-\Large{\textbf{\Titel}}
-\vfill
-\onehalfspacing{}
-
-\large{\Arbeitstyp}
-
-\vfill
-\normalsize
-
-von
-
-\vspace{.5cm}
-\large{\Name}
-\normalsize
-\vfill
-
-\ifassignment{}
-\else
-    Zur Erlangung des akademischen Grades \\
-    \textbf{\Grad}
+    \Large{\textbf{\Titel}}
     \vfill
-\fi
+    \onehalfspacing{}
 
-Im Studiengang \Studiengang{} \\
-an der staatlich anerkannten AKAD Hochschule Stuttgart
+    \large{\Arbeitstyp}
 
-\vfill
-\vfill
+    \vfill
+    \normalsize
 
-\today
+    von
 
-\vfill
+    \vspace{.5cm}
+    \large{\Name}
+    \normalsize
+    \vfill
 
-\includegraphics[scale=0.35]{resources/akad_logo.png}
+    \ifassignment       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+    \else
+      Zur Erlangung des akademischen Grades \\
+      \textbf{\Grad}
+      \vfill
+    \fi
 
-\end{center}
+    Im Studiengang \Studiengang{} \\
+    an der staatlich anerkannten AKAD Hochschule Stuttgart
 
-\vfill
-\begin{spacing}{1.2}
+    \vfill
+    \vfill
+
+    \today
+
+    \vfill
+
+    \includegraphics[scale=0.35]{resources/akad_logo.png}
+
+  \end{center}
+
+  \vfill
+  \begin{spacing}{1.2}
     \begin{tabbing}
-        \hspace{9cm}     \= \kill
-        \textbf{Bearbeitungszeit}       \>  \Bearbeitungszeit{} \\
-        \textbf{Betreuer}               \>  \Betreuer{} \\
-        \textbf{Immatrikulationsnummer} \>  \Immatrikulationsnummer{} \\
-        \textbf{E-Mail}                 \> \href{mailto:\Email}{\Email} \\
-        \textbf{Adresse}                \> \Strasse{} \\
-                                        \> \PlzOrt{}
+      \hspace{9cm}     \= \kill
+      \textbf{Bearbeitungszeit}       \>  \Bearbeitungszeit{} \\
+      \textbf{Betreuer}               \>  \Betreuer{} \\
+      \textbf{Immatrikulationsnummer} \>  \Immatrikulationsnummer{} \\
+      \textbf{E-Mail}                 \> \href{mailto:\Email}{\Email} \\
+      \textbf{Adresse}                \> \Strasse{} \\
+      \space                          \> \PlzOrt{}
     \end{tabbing}
-\end{spacing}
-\restoregeometry{}
+  \end{spacing}
+  \restoregeometry{}
 \end{titlepage}
