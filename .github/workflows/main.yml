@@ -1,0 +1,31 @@
+name: Build LaTeX document
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: [ vorlage ] # tex file(s) to compile (without extension)
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2  # Checks-out repository under $GITHUB_WORKSPACE
+      - name: Lint ${{ matrix.file }}.tex
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: ${{ matrix.file }}.tex
+          compiler: chktex   # run chktex the same way LaTeX-Workshop extension of Visual Studio code would
+          args: -wall -n22 -n30 -e16 -q
+      - name: Compile ${{ matrix.file }}.tex
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: ${{ matrix.file }}.tex    # run latexmk on the given file
+          args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -latexoption=-shell-escape
+      - name: Upload ${{ matrix.file }}.pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.file }}.pdf  # upload exactly this generated PDF (will show up at the bottom of each run of this github action)
+          path: ${{ matrix.file }}.pdf
+          if-no-files-found: error
