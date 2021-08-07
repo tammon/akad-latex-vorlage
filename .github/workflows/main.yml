@@ -17,7 +17,7 @@ jobs:
         with:
           root_file: ${{ matrix.file }}.tex
           compiler: chktex   # run chktex the same way LaTeX-Workshop extension of Visual Studio code would
-          args: -wall -n22 -n30 -e16 -q
+          args: -eall -n22 -n30 -e16 -q
       - name: Compile ${{ matrix.file }}.tex
         uses: dante-ev/latex-action@latest
         with:
