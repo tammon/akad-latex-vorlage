@@ -4,28 +4,76 @@ on:
   pull_request:
   workflow_dispatch:
 jobs:
+  list_tex_files:
+    # list all .tex files in this repo and save them in a variable that can be used by other jobs as input for their matrix (so they run one job on each tex file)
+    outputs:
+      matrix: ${{ steps.list-files.outputs.matrix }}
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: list .tex files in this repo
+        id: list-files
+        # print each filename (relative path) as an element of a JSON list, github can parse this into setting output variable "matrix"
+        run: |
+          printf "::set-output name=matrix::{\"include\":["
+          find . -name "*.tex" -exec printf "{\"file\":\"{}\"}," \;
+          printf "]}\n"
+  check_formatting:
+    # run latexindent on each tex file and diff the result with committed file. Produces failure of the formatting is not applied properly.
+    needs: [list_tex_files]
+    runs-on: [ubuntu-latest]
+    strategy:
+      # read the output variable of the list_tex_files job
+      matrix: ${{fromJson(needs.list_tex_files.outputs.matrix)}}
+      fail-fast: false
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2  # Checks-out repository under $GITHUB_WORKSPACE
+      - name: Apply indentation rules to ${{ matrix.file }}
+        # first format the content of the file and save this into a temporary file 
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: ${{ matrix.file }}
+          compiler: latexindent
+          args: --local -o formatted.tex    # configuration is read from local files in git repository root. you can adjust here if your file is somewhere else.
+      - name: Check for correct formatting
+        # now compare this temporary file, which is correctly formatted, with the actual file. Any differences will be printed in screen and fail this job.
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: formatted.tex
+          compiler: diff
+          args: ${{ matrix.file }}
+          
   build_latex:
+    # use latexmk to create a PDF, it can detect whether to run biber and via a .latexmkrc file you can also tell it to run makeglossaries or other steps.
+    # If you renamed your root tex file, originally "vorlage.tex" (e.g. to get a nice PDF name), simply also adjust the filename in this job's matrix.
+    # PDF is then uploaded so it shows up on the summary page of the succeeded action run.
+    # Finally, the whole project is linted with ChkTeX (done at the end so that a failure fails the action, but does not prevent PDF from being built)
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        file: [ vorlage ] # tex file(s) to compile (without extension)
+        file: [ vorlage ] # root tex file(s) to compile (without extension). Only set multiple files if you are creating multiple PDFs.
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2  # Checks-out repository under $GITHUB_WORKSPACE
       - name: Compile ${{ matrix.file }}.tex
-        uses: dante-ev/latex-action@latest
-        with:
-          root_file: ${{ matrix.file }}.tex    # run latexmk on the given file
-          args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -latexoption=-shell-escape
-      - name: Upload ${{ matrix.file }}.pdf
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ matrix.file }}.pdf  # upload exactly this generated PDF (will show up at the bottom of each run of this github action)
-          path: ${{ matrix.file }}.pdf
-          if-no-files-found: error
-      - name: Lint ${{ matrix.file }}.tex
+        # run latexmk on the given file
         uses: dante-ev/latex-action@latest
         with:
           root_file: ${{ matrix.file }}.tex
-          compiler: chktex   # run chktex the same way LaTeX-Workshop extension of Visual Studio code would
-          args: -eall -n22 -n30 -e16 -q
+          args: -pdf -latexoption=-file-line-error -latexoption=-interaction=nonstopmode -latexoption=-shell-escape
+      - name: Upload ${{ matrix.file }}.pdf
+        # upload exactly this generated PDF (will show up at the bottom of each run of this github action)
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.file }}.pdf
+          path: ${{ matrix.file }}.pdf
+          if-no-files-found: error
+      - name: Lint ${{ matrix.file }}.tex
+        # run chktex the same way LaTeX-Workshop extension of Visual Studio code would
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: ${{ matrix.file }}.tex
+          compiler: chktex
+          args: -eall -n22 -n30 -e16 -q   # make sure to adjust these arguments to match your IDE's (or vice versa)
