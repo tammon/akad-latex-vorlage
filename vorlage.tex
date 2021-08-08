@@ -80,7 +80,7 @@
 
 \normalsize
 
-\ifsperrvermerk       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+\ifsperrvermerk{}
   % this work contains restricted information (usually company-internal information)
   \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Sperrvermerk
     \begin{center}
@@ -99,26 +99,26 @@
   \tableofcontents
 
   % Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-  \iflistoffigures       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+  \iflistoffigures{}
     \listoffigures
   \fi
 
   % Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-  \iflistoftables       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+  \iflistoftables{}
     \listoftables
   \fi
 
   % Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-  \ifacronym       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+  \ifacronym{}
     \printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
   \fi
 
-  \ifglossary       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+  \ifglossary{}
     \printglossary[title=Glossar]
   \fi
 
   % Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-  \iflistofformeln       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+  \iflistofformeln{}
     \listof{Formel}{Formelübersicht}
     \newpage
   \fi
@@ -157,7 +157,7 @@
 
 
 % Anhang
-\ifappendix       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+\ifappendix{}
   \appendix
   \input{content/anhang}
   \clearpage
@@ -176,7 +176,7 @@
 \pagestyle{empty}
 \thispagestyle{empty}
 
-\ifassignment       % chktex 1 don't terminate \if-commands with {} as it breaks auto-indentation
+\ifassignment{}
 \else
   % this is not a simple assignment but a full thesis.
   \begin{center}
@@ -198,12 +198,12 @@
     \begin{picture}(#1,#2)%
       \linethickness{0.05mm}%
       \put(0,0){\dashbox{0.2}(#1,#2)%
-      {\parbox{#1mm}{%
-      \centering\footnotesize
-      %{\bf MESSBOX}\\
-      Breite $ = #1 {\ mm}$\\
-      Höhe $ = #2 {\ mm}$
-      }}}\end{picture}
+        {\parbox{#1mm}{%
+            \centering\footnotesize
+            %{\bf MESSBOX}\\
+            Breite $ = #1 {\ mm}$\\
+            Höhe $ = #2 {\ mm}$
+          }}}\end{picture}
   }
 
   \begin{center}
