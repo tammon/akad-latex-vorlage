@@ -61,7 +61,7 @@ jobs:
         with:
           root_file: ${{ env.file }}.tex
           compiler: chktex
-          args: -eall -n22 -n30 -e16 -q   # make sure to adjust these arguments to match your IDE's (or vice versa)
+          args: -eall -n22 -n30 -e16 -w44 -q   # make sure to adjust these arguments to match your IDE's (or vice versa)
   build_latex:
     # use latexmk to create a PDF, it can detect whether to run biber and via a .latexmkrc file you can also tell it to run makeglossaries or other steps.
     # PDF is then uploaded so it shows up on the summary page of the succeeded action run.
