@@ -258,6 +258,8 @@ UserWarnRegex
   # but I wonder if it's worth the complexity...
   (?!#-2:Vertical! rules! in! tables! are! ugly)\\begin\{(array|tabularx?\*?)\}(\[.*\])?\{.*\|.*\}
 
+  # warn user about TODOs left to resolve
+  (?!#10:! unresolved! TODO)\\todo\{.*\}
 }
 
 
