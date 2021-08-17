@@ -97,6 +97,10 @@
 
 \newfloat{Formel}{H}{for}
 
+%% FAQ Umgebung, z.B. für Interview Protokolle im Appendix
+\newenvironment{faq}{}{}
+\newcommand{\faqitem}[2]{\begin{flushleft}\textbf{#1}\end{flushleft}\begin{flushleft}\setlength{\leftskip}{20pt}\setlength{\parskip}{0pt}\textit{#2}\end{flushleft}}
+
 \renewcommand\UrlFont{\color{black}\rmfamily\itshape} % chktex 6 ignore missing '\/' after \itshape
 
 \renewcommand{\familydefault}{\rmdefault}
