@@ -99,7 +99,19 @@
 
 %% FAQ Umgebung, z.B. für Interview Protokolle im Appendix
 \newenvironment{faq}{}{}
-\newcommand{\faqitem}[2]{\subsubsection{#1}\setlength{\leftskip}{20pt}\itshape{#2}} % chktex 6 ignore "missing" '\/' after \itshape
+\DeclareSectionCommand[
+  runin=false,                                  % start the answer in a new line
+  afterskip=-0.5\parskip plus -1ex minus -.2ex, % counteract the paragraph skip to get very little vertical space between question and answer.     % chktex 1 commands cannot be terminated with curly braces in arguments
+  beforeskip=-2.5ex plus -1ex minus -.2ex,
+  indent=0pt,
+  level=4,
+  font=\usekomafont{paragraph}\itshape, %% using the same font as paragraph, but italic
+  tocindent=10em,
+  tocnumwidth=5em,
+  counterwithin=subsubsection,
+  style=section,
+]{question}
+\newcommand{\faqitem}[2]{\question{#1}{\setlength{\leftskip}{4ex}#2\par}}
 
 \renewcommand\UrlFont{\color{black}\rmfamily\itshape} % chktex 6 ignore missing '\/' after \itshape
 
