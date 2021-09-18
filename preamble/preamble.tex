@@ -112,6 +112,9 @@
   style=section,
 ]{question}
 \newcommand{\faqitem}[2]{\question{#1}{\setlength{\leftskip}{\parindent}#2\par}}
+\def\questionautorefname{Frage} % for referring to labels within a question with \autoref, though I prefer referencing with the custom \faqref command
+\newcommand*{\faqref}[1]{\hyperref[{#1}]{\appendixautorefname{}~\ref*{#1}, \questionautorefname{}~``\nameref*{#1}''}}
+
 
 \renewcommand\UrlFont{\color{black}\rmfamily\itshape} % chktex 6 ignore missing '\/' after \itshape
 
