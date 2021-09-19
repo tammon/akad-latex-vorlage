@@ -260,6 +260,7 @@ UserWarnRegex
 
   # warn user about TODOs left to resolve
   (?!#10:! unresolved! TODO)\\todo\{.*\}
+  (?!#10:! missing! citation)\\citationneeded([^[:alnum:]}]|\{\}|$)
 }
 
 
