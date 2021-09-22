@@ -1,3 +1,5 @@
+# format all files in workspace:
+# find . -name "*.tex" -exec latexindent --local --silent --outputfile={} {} \;
 defaultIndent: '  '
 indentPreamble: 1
 specialBeginEnd:
