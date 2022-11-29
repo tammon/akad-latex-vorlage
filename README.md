@@ -40,6 +40,13 @@ Egal durch welchen Mechanismus, es wird grundsätzlich folgendes ausgeführt:
 	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -synctex=1 -output-directory=output vorlage
 	pdflatex -halt-on-error -interaction=errorstopmode -shell-escape -synctex=1 -output-directory=output vorlage
 ```
+
+### Codespaces
+Mit GitHub Codespace kann ein PDF direkt in der Cloud erzeugt werden, ohne lokal irgendetwas installieren zu müssen!  
+1. Auf GitHub über den "<> Code" button einen Codespace öffnen (texlive und LaTeX Workshop sind bereits installiert und konfiguriert)
+1. In der resultierenden Web-IDE ein beliebiges tex file öffnen (z.B. vorlage.tex)
+1. Oben rechts erscheinen ein grüner Pfeil zum Erzeugen des PDFs und ein Preview-button zum Anzeigen des PDFs (aktualisiert automatisch)
+
 ### Windows Batch
 Im Ordner misc liegt ein File namens make.bat, dieses kann ausgeführt werden um das PDF manuell zu erzeugen (vorausgesetzt pdflatex ist im PATH).
 ### Linux/MacOS makefile
@@ -48,5 +55,6 @@ Hierfür gibt es ein Makefile im Ordner misc.
 ### IDE
 Es gibt viele IDEs für LaTeX. Der aktuelle Fork existiert hauptsächlich, weil ich Visual Studio Code verwenden wollte mit der Extension "LaTeX Workshop" und der LaTeX Installation TeX Live.  
 In diesem Fall sollte in den Einstellungen der Extension der Wert "latex-workshop.latex.outDir" auf "%DIR%/output" gesetzt werden und dann mit latexmk (default) gebaut werden. Das PDF wird dann bei jedem Abspeichern erzeugt und der preview automatisch refreshed.
+
 ## Credits
 Weiterentwicklung basierend auf [tammon/akad-vorlage](https://github.com/tammon/akad-vorlage), selbst eine Weiterentwicklung basierend auf [derdanu/akad-vorlage](https://github.com/derdanu/akad-vorlage).
