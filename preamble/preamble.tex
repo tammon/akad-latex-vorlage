@@ -1,11 +1,12 @@
-\usepackage[nottoc]{tocbibind} % Anzeigen des Literaturverzeichnisses im TOC
-\usepackage{epsfig}
-%\usepackage{times}
+% dummy comment for file-wide intellisense errors
+%\usepackage{graphicx} % enables use of eps graphics (encapsulated PostScript). Activate if needed.
+%\usepackage{newtx} % replacement of previously used "times" package (using Times font as default)
 \usepackage{babel}
 \usepackage{supertabular}
 \usepackage{wrapfig}
 \usepackage{multirow}
 \usepackage[onehalfspacing]{setspace}
+\usepackage{scrhack}  % fix float warning of KOMA produced when including listings
 \usepackage{listings}
 \usepackage{mathptmx}
 \usepackage{geometry}
@@ -17,8 +18,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float} % Notwendig fuer figure[h]
 \usepackage[german=quotes]{csquotes}
-\usepackage[style=alphabetic]{biblatex} % alternative: iso-authoryear
+\usepackage[style=alphabetic]{biblatex} % alternative for sort: iso-authoryear
+\usepackage{xurl} % better line-breaking than url package. Needs to be added after biblatex to work in bibliography.
 \usepackage{pdfpages}
+\usepackage{calc} % for calculations with text width
 % Fuer Schriftart Arial
 %\usepackage[scaled]{uarial}
 
@@ -30,85 +33,91 @@
 
 
 %% Einstellungen fuer Quellcode Highlighting
-
-\usepackage{listings}
 \usepackage{color}
-
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-\lstset{ %
+\lstset{
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
   basicstyle=\footnotesize,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
   breaklines=true,                 % sets automatic line breaking
   captionpos=b,                    % sets the caption-position to bottom
   commentstyle=\color{mygreen},    % comment style
-  deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  deletekeywords={...},            % if you want to delete keywords from the given language   % chktex 11 ignore suggestion to use \ldots
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code    % chktex 9 ignore unmatched parenthesis
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
- % frame=single,                    % adds a frame around the code
+  % frame=single,                    % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
   keywordstyle=\color{blue},       % keyword style
   language=Octave,                 % the language of the code
-  morekeywords={*,...},            % if you want to add more keywords to the set
+  morekeywords={*,...},            % if you want to add more keywords to the set   % chktex 11 ignore suggestion to use \ldots
   numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
   numbersep=5pt,                   % how far the line-numbers are from the code
   numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
   rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
   showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=true,          % underline spaces within strings only
-  showtabs=true,                  % show tabs within strings adding particular underscores
+  showstringspaces=true,           % underline spaces within strings only
+  showtabs=true,                   % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{mymauve},     % string literal style
   tabsize=2,                       % sets default tabsize to 2 spaces
-  title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-  belowskip= 0pt 
-}
+  title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+  belowskip= 0pt,
+}  % chktex 10 suppress false positive caused by a deliberately unmatched ')' above
 
 % PDF Einstellungen für Verlinkungen
 
 \usepackage[
-	pdftitle={\Titel},
-	pdfsubject={\pdfsubject},
-	pdfauthor={\Name},
-	pdfkeywords={\pdfkeywords}
-	hyperfootnotes=false,
-	colorlinks=true,
-	linkcolor=black,
-	urlcolor=black,
-	citecolor=black
+  pdftitle={\Titel},
+  pdfsubject={\pdfsubject},
+  pdfauthor={\Name},
+  pdfkeywords={\pdfkeywords}
+  hyperfootnotes=false,
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black
 ]{hyperref}
-
-%%% Abkürzungsverzeichnis
-%\usepackage[
-%%	footnote,	% Full names appear in the footnote
-%%	smaller,		% Print acronym in smaller fontsize (required package: relsize)
-%	printonlyused, % Print only acronyms that are actually used in the text
-%%	dua, % print full names everytime
-%%	nolist, % no list with all acronyms
-%%	nohyperlinks, % no hyperlinks (required package: hyperref)
-%]{acronym}
 
 %%% Abkürzungsverzeichnis (Glossar) Neues Paket (kann nomencl und acronym ersetzen)
 % muss nach hyperref eingebunden werden, um das Paket zu nutzen
 % Abkürzungen werden nur im Glossar angezeigt, wenn sie im Dokument mindestens einmal genutzt wurden
 \usepackage[
-%	style=long,
-	toc, % Glossar erscheint im Inhaltsverzeichnis
-	acronym, % Setzt Akronyme in ein gesondertes Verzeichnis
-%	footnote, % Setzt eine Fußnote beim ersten verwendet wird
-%	nomain,
-%	style=altlist,
-	nopostdot, % löscht den schlusspunkt nach jeder description
+  % style=long,
+  toc, % Glossar erscheint im Inhaltsverzeichnis
+  acronym, % Setzt Akronyme in ein gesondertes Verzeichnis
+  % footnote, % Setzt eine Fußnote beim ersten verwendet wird
+  % nomain,
+  % style=altlist,
+  nopostdot, % löscht den schlusspunkt nach jeder description
 ]{glossaries}
-\glossarystyle{super}
-\makeglossaries % Glossar generieren
+\setglossarystyle{super}
+\makeglossaries{} % Glossar generieren
 
 \newfloat{Formel}{H}{for}
 
-\renewcommand\UrlFont{\color{black}\rmfamily\itshape}
+%% FAQ Umgebung, z.B. für Interview Protokolle im Appendix
+\newenvironment{faq}{}{}
+\DeclareSectionCommand[
+  runin=false,                                        % start the answer in a new line
+  afterskip=0.25\baselineskip plus -1ex minus -.2ex,  % chktex 1 commands cannot be terminated with curly braces in arguments
+  beforeskip=-2.5ex plus -1ex minus -.2ex,
+  indent=0pt,
+  level=4,
+  font=\usekomafont{paragraph}\itshape, %% using the same font as paragraph, but italic
+  tocindent=10em,
+  tocnumwidth=5em,
+  counterwithin=subsubsection,
+  style=section,
+]{question}
+\newcommand{\faqitem}[2]{\question{#1}{\setlength{\leftskip}{\parindent}#2\par}}
+\def\questionautorefname{Frage} % for referring to labels within a question with \autoref, though I prefer referencing with the custom \faqref command
+\newcommand*{\faqref}[1]{\hyperref[{#1}]{\appendixautorefname{}~\ref*{#1}, \questionautorefname{}~``\nameref*{#1}''}}
+
+
+\renewcommand\UrlFont{\color{black}\rmfamily\itshape} % chktex 6 ignore missing '\/' after \itshape
 
 \renewcommand{\familydefault}{\rmdefault}
 \newcommand{\bflabel}[1]{\normalfont{\normalsize{#1}}\hfill}

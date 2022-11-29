@@ -1,0 +1,6 @@
+# Ignore everything in this directory, it is meant for output of LaTeX
+*
+# Except any .gitignore files
+# (first have to un-ignore folders again, or the exception for **/.gitignore won't have any effect)
+!**/
+!**/.gitignore

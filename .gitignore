@@ -1,9 +1,4 @@
-*.aux
-*.bbl
-*.blg
-*.lof
-*.log
-*.lot
-*.toc
-*.out
-*.synctex.gz
+# ignore secrets.tex if user added one so personal information doesn't get leaked to github
+secrets.tex
+# latexindent sometimes leaves a log file
+indent.log

@@ -2,6 +2,7 @@
 \newcommand{\code}{\texttt}
 
 %% Todos mithilfe eines Rahmens hervorheben
-\newcommand{\todo}[1]{\fbox{\parbox{\textwidth}{\textbf{To do:} #1}}}
+\newcommand{\todo}[1]{\fbox{\parbox{\textwidth-\fboxsep*6-\unitlength}{\textbf{To do:} #1}}}
 
-
+%% eine Fußnote als Platzhalter für ein Zitat
+\newcommand{\citationneeded}{\footnote{\textit{missing citation}}}

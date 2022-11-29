@@ -7,27 +7,32 @@ UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S), Linux)
 	pdflatexcmd = pdflatex --shell-escape
-	bibtexcmd = bibtex
+	bibercmd = biber
+	makeglossariescmd = makeglossaries
 	pdfviewercmd = atril
 endif
 
 ifeq ($(UNAME_S), Darwin)
 	pdflatexcmd = /usr/texbin/pdflatex --shell-escape
-	bibtexcmd = /usr/texbin/bibtex
+	bibercmd = /usr/texbin/biber
+	makeglossaries = /usr/texbin/makeglossaries
 	pdfviewercmd = open
 endif
 
 
 all: $(filename).tex $(neededfiles) latex clean
 latex:
-	$(pdflatexcmd) $(filename)
-	$(bibtexcmd) $(filename)
-	$(pdflatexcmd) $(filename)
-	$(pdflatexcmd) $(filename)
+	$(pdflatexcmd) -halt-on-error -interaction=nonstopmode -shell-escape -synctex=1 -output-directory=output $(filename)
+	$(bibercmd) output/$(filename)
+	$(makeglossariescmd) -d output $(filename)
+	# re-run pdflatex twice more to update references (page numbers can take a while to settle down)
+	$(pdflatexcmd) -halt-on-error -interaction=nonstopmode -shell-escape -synctex=1 -output-directory=output $(filename)
+	# last run also creates synctex data in case you open this with an IDE
+	$(pdflatexcmd) -halt-on-error -interaction=nonstopmode -shell-escape -synctex=1 -output-directory=output $(filename)
 
 view:
-	if [ -f $(filename).pdf ]; then \
-		$(pdfviewercmd) $(filename).pdf; \
+	if [ -f "output/$(filename).pdf" ]; then \
+		$(pdfviewercmd) "output/$(filename).pdf"; \
 	else \
 		$(MAKE) all ;\
 		$(MAKE) view ;\

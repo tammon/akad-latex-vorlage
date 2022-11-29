@@ -1,54 +1,56 @@
 \begin{titlepage}
-\newgeometry{left=25mm, right=20mm, top=35mm, bottom=30mm}
-\begin{center}
-\thispagestyle{empty}
+  \newgeometry{left=25mm, right=20mm, top=35mm, bottom=30mm}
+  \begin{center}
+    \thispagestyle{empty}
 
-\Large{\textbf{\Titel}}
-\vspace{1cm}
-\onehalfspacing
+    \Large{\textbf{\Titel}}
+    \vfill
+    \onehalfspacing{}
 
-\large{\Arbeitstyp}
+    \large{\Arbeitstyp}
 
-\vspace{1cm}
-\normalsize
+    \vfill
+    \normalsize
 
-von
+    von
 
-\vspace{.5cm} 
-\large{\Name}
-\normalsize
-\vspace{1cm}
+    \vspace{.5cm}
+    \large{\Name}
+    \normalsize
+    \vfill
 
-\ifassignment
-\else
-Zur Erlangung des akademischen Grades \\
-\textbf{\Grad}
-\vspace{1cm}
-\fi
+    \ifassignment{}
+    \else
+      Zur Erlangung des akademischen Grades \\
+      \textbf{\Grad}
+      \vfill
+    \fi
 
-Im Studiengang \Studiengang \\
-an der staatlich anerkannten AKAD Hochschule Stuttgart
-\vspace{2cm}
+    Im Studiengang \Studiengang{} \\
+    an der staatlich anerkannten AKAD Hochschule Stuttgart
 
-\today
+    \vfill
+    \vfill
 
-\vspace{2cm}
+    \today
 
-\includegraphics[scale=0.35]{resources/akad_logo.png}
+    \vfill
 
-\end{center}
+    \includegraphics[scale=0.35]{resources/akad_logo.png}
 
-\vfill
-\begin{spacing}{1.2}
+  \end{center}
+
+  \vfill
+  \begin{spacing}{1.2}
     \begin{tabbing}
-	    \hspace{9cm}     \= \kill
-	    \textbf{Bearbeitungszeit}  \>  \Bearbeitungszeit \\
-	    \textbf{Betreuer}              \>  \Betreuer \\
-	    \textbf{Immatrikulationsnummer}  \>  \Immatrikulationsnummer \\
-	    \textbf{E-Mail}		\> \href{mailto:\Email}{\Email} \\
-	    \textbf{Adresse}		\> \Strasse \\
-	    		\> \PlzOrt
-	\end{tabbing}
-\end{spacing}
-\restoregeometry
+      \hspace{9cm}     \= \kill
+      \textbf{Bearbeitungszeit}       \>  \Bearbeitungszeit{} \\
+      \textbf{Betreuer}               \>  \Betreuer{} \\
+      \textbf{Immatrikulationsnummer} \>  \Immatrikulationsnummer{} \\
+      \textbf{E-Mail}                 \> \href{mailto:\Email}{\Email} \\
+      \textbf{Adresse}                \> \Strasse{} \\
+      \space                          \> \PlzOrt{}
+    \end{tabbing}
+  \end{spacing}
+  \restoregeometry{}
 \end{titlepage}

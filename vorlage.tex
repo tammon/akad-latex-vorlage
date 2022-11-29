@@ -1,48 +1,56 @@
-% Vorgaben Assignment aus Studienheft SQL03
+% Vorgaben Assignment aus Studienheft SQL03/SQLD302
 % Formatvorgaben fuer den Text
-% Umfang: 8 - 10 Seiten (inkl. Abbildungen und Tabellen, aber ohne Deckblatt, % Gliederung und Literaturverzeichnis, Eidesstattliche Erklaerung)
-% Zeilenabstand: 1,5
-% Schriftart: frei
-% Schriftgrad: 12 pt
+% Umfang: (inkl. Abbildungen und Tabellen, aber ohne Deckblatt, Gliederung und Literaturverzeichnis, Eidesstattliche Erklaerung)
+%    Assignments: 8 - 12 Seiten
+%    Projektberichte: ca. 25 Seiten
+%    Bachelor-Arbeit: ca. 40 bis 60 Seiten (Qualität ist hier wichtiger als die "korrekte" Seitenzahl!)
+%    Master-Arbeit: ca. 60 bis 80 Seiten (Qualität ist hier wichtiger als die "korrekte" Seitenzahl!)
+%    Diplomarbeit: ca. 50 bis 70 Seiten (Qualität ist hier wichtiger als die "korrekte" Seitenzahl!)
+% Bearbeitungsdauer:
+%    Assignments: 2 Monate
+%    Projektberichte: 4 Monate
+% Zeilenabstand: 1,5x (in Tabellen wahlweise auch 1x)
+% Schriftart: frei (Times New Roman oder Arial sind empfohlen)
+% Schriftgrad: 12 pt (in Tabellen wahlweise auch 10 pt)
 % Variablen, physikalische Groessen und Funktionszeichen werden kursiv gedruckt.
-% Korrekturrand: links: 4,5 cm, rechts 2,0 cm, oben und unten jeweils 3,0 cm
-% Deckblatt: (Adresse, AKAD-E-Mail-Adresse, Immatrikulationsnummer, Modul-
-% bezeichnung, Thema, Datum, Felder für Korrektor)
+% Korrekturrand: links: 4,5 cm (2,5 cm für Assignments), rechts 2,0 cm, oben und unten jeweils 3,0 cm
+% Deckblatt: (Adresse, E-Mail-Adresse, Immatrikulationsnummer, Modulbezeichnung, Thema, Datum, Felder für Korrektor)
 % Gliederung (1 Seite)
-% Literaturverzeichnis (3 - 5 Literaturquellen  z. B. Lehrbuecher, aktuelle Fachartikel recherchieren)
-% Eidesstattliche Erklaerung (unterschrieben und fest eingebunden)
-% Bearbeitungsdauer: 2 Monate
+% Literaturverzeichnis (z. B. Lehrbuecher, aktuelle Fachartikel recherchieren... Assignments sollten mit 3 - 5 Literaturquellen belegt werden)
+% Eidesstattliche Erklaerung, unterschrieben und fest eingebunden (Ausnahme: bei Assignments wird diese elektronisch beim Upload abgegeben)
 
 
 %
 %% Document Class (Koma Script) -----------------------------------------
 %% Doc: scrguien.pdf
 \documentclass[%
-   %draft=true,     % draft mode (no images, layout errors shown)
-   draft=false,     % final mode 
-%%% --- Paper Settings ---
-   paper=a4,
-   paper=portrait, % landscape
-   pagesize=auto, % driver
-%%% --- Base Font Size ---
-   fontsize=12pt,%
-%%% --- Koma Script Version ---
-   version=last, %
-%%% --- Global Package Options ---
-   ngerman, % language (passed to babel and other packages)
-   parskip,
-   numbers=noenddot,
-   bibliography=totoc
+  %draft=true,     % draft mode (no images, layout errors shown)
+  draft=false,     % final mode
+  %%% --- Paper Settings ---
+  paper=a4,
+  paper=portrait, % landscape
+  pagesize=auto, % driver
+  %%% --- Base Font Size ---
+  fontsize=12pt,%
+  %%% --- Koma Script Version ---
+  version=last, %
+  %%% --- Global Package Options ---
+  ngerman, % language (passed to babel and other packages)
+  % parskip,  % use empty lines between paragraphs instead of indenting the first line
+  numbers=noenddot,
+  listof=totoc,        % add lists of figures and tables to Table of Contents
+  bibliography=totoc,  % add cited works to Table of Contents
 ]{scrreprt} % Classes: scrartcl, scrreprt, scrbook\usepackage[ngerman]{babel}
 
-\newif\ifappendix
-\newif\iflistoffigures
-\newif\iflistoftables
-\newif\ifacronym
-\newif\iflistofformeln
-\newif\ifassignment
-\newif\ifabschlussarbeit
-\newif\ifglossary
+\newif\ifsperrvermerk{}
+\newif\ifappendix{}
+\newif\iflistoffigures{}
+\newif\iflistoftables{}
+\newif\ifacronym{}
+\newif\iflistofformeln{}
+\newif\ifassignment{}
+\newif\ifabschlussarbeit{}
+\newif\ifglossary{}
 
 % Einstellungen für das Gesamtdokument
 \input{einstellungen}
@@ -72,61 +80,74 @@
 
 \normalsize
 
+\ifsperrvermerk{}
+  % this work contains restricted information (usually company-internal information)
+  \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Sperrvermerk
+    \begin{center}
+      {\Large Sperrvermerk}
+      \vspace*{4cm}
+    \end{center}
+    \noindent
+    \SperrvermerkBausteinEins{} enthält vertrauliche Daten der \Firma. Veröffentlichungen oder Vervielfältigungen \SperrvermerkBausteinZwei{} -- auch nur ansatzweise -- sind ohne ausdrückliche Genehmigung der Geschäftsleitung der \Firma{} nicht gestattet. \SperrvermerkBausteinDrei{} ist nur den Gutachtern sowie den Mitgliedern des Prüfungsausschusses zugänglich zu machen.
+  \end{spacing}
+  \clearpage
+\fi
+
 \begin{spacing}{1.0} % Verzeichnisse werden mit einzeiligem Abstand gesetzt
 
-% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\tableofcontents
+  % Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \tableofcontents
 
-% Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistoffigures
-\listoffigures 
-\fi
+  % Abbildungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \iflistoffigures{}
+    \listoffigures
+  \fi
 
-% Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistoftables
-\listoftables
-\fi
+  % Tabellenverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \iflistoftables{}
+    \listoftables
+  \fi
 
-% Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\ifacronym
-\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
-\fi
+  % Abkürzungsverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \ifacronym{}
+    \printglossary[type=\acronymtype,title=Abkürzungsverzeichnis]
+  \fi
 
-\ifglossary
-\printglossary[title=Glossar]
-\fi
+  \ifglossary{}
+    \printglossary[title=Glossar]
+  \fi
 
-% Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
-\iflistofformeln
-\listof{Formel}{Formelübersicht}
-\newpage
-\fi
+  % Formelverzeichnis %%%%%%%%%%%%%%%%%%%%%%
+  \iflistofformeln{}
+    \listof{Formel}{Formelübersicht}
+    \newpage
+  \fi
 
 
-\end{spacing} 
+\end{spacing}
 
 \clearpage
 
-\newcounter{romanPagenumber} 
+\newcounter{romanPagenumber}
 \setcounter{romanPagenumber}{\value{page}} % Roemische Seitenanzahl speichern.
 
-\nocite{*} 
+% \nocite{*} % enable this if you want to list all your literature, even if it wasn't actually cited in your text
 
 \pagenumbering{arabic}
 
 \begin{spacing}{1.5} % Zeilenabstand: 1,5 fuer den Textteil
 
-% Einleitung
-\include{content/einleitung}
+  % Einleitung
+  \include{content/einleitung}
 
-%Grundlagen
-\include{content/grundlagen}
+  %Grundlagen
+  \include{content/grundlagen}
 
-%Hauppteil
-\include{content/hauptteil}
+  %Hauppteil
+  \include{content/hauptteil}
 
-%Schluss
-\include{content/schluss}
+  %Schluss
+  \include{content/schluss}
 
 \end{spacing}
 
@@ -135,11 +156,11 @@
 \pagestyle{plain}
 
 
-% Anhang 
-\ifappendix
-\appendix
-\input{content/anhang}
-\clearpage
+% Anhang
+\ifappendix{}
+  \appendix
+  \input{content/anhang}
+  \clearpage
 \fi
 
 % Literaturverzeichniss - Ab hier wieder Roemische Seitenzahlen
@@ -149,53 +170,51 @@
 %\bibliographystyle{apalike}
 %\bibliography{literatur}
 \printbibliography[title=\prefbiblioname]
-\onehalfspacing
+\onehalfspacing{}
 \clearpage
 
-\pagestyle{empty} 
+\pagestyle{empty}
 \thispagestyle{empty}
 
-\ifassignment
+\ifassignment{}
 \else
-\begin{center}
-{\Large Eidesstattliche Erkl"arung}
-\vspace*{4cm}\end{center}
-\noindent
-Ich versichere, dass ich das beiliegende Assignment selbstst"andig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle w"ortlich oder sinngem"a"s "ubernommenen Stellen in der Arbeit gekennzeichnet habe. 
-\vspace{3cm}
+  % this is not a simple assignment but a full thesis.
+  \begin{center}
+    {\Large Eidesstattliche Erklärung}
+    \vspace*{4cm}\end{center}
+  \noindent
+  Ich versichere, dass ich die beiliegende Arbeit selbstständig verfasst, keine anderen als die angegebenen Quellen und Hilfsmittel benutzt sowie alle wörtlich oder sinngemäß übernommenen Stellen in der Arbeit gekennzeichnet habe.
+  \vspace{3cm}
 
-\hspace{-0.8cm}
-\rule[0.5ex]{6.5cm}{1pt}
-\hspace{1.3cm}
-\rule[0.5ex]{6.5cm}{1pt}
-(Datum, Ort)
-\hspace{6.3cm}(Unterschrift)
+  \rule[0.5ex]{6.5cm}{1pt}\hfill\rule[0.5ex]{6.5cm}{1pt}
+  \\
+  \hspace*{0.5cm} (Datum, Ort) \hfill (Unterschrift) \hspace*{6.5cm-\widthof{ (Unterschrift) }-0.5cm}
 
-\clearpage
+  \clearpage
 
-%Messbox zur Druckkontrolle:
-\newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
-\setlength{\unitlength}{1.0mm}%
-\begin{picture}(#1,#2)%
-\linethickness{0.05mm}%
-\put(0,0){\dashbox{0.2}(#1,#2)%
-{\parbox{#1mm}{%
-\centering\footnotesize 
-%{\bf MESSBOX}\\ 
-Breite $ = #1 {\ mm}$\\
-H\"ohe $ = #2 {\ mm}$
-}}}\end{picture}
-}
+  %Messbox zur Druckkontrolle:
+  \newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
+    \setlength{\unitlength}{1.0mm}%
+    \begin{picture}(#1,#2)%
+      \linethickness{0.05mm}%
+      \put(0,0){\dashbox{0.2}(#1,#2)%
+        {\parbox{#1mm}{%
+            \centering\footnotesize
+            %{\bf MESSBOX}\\
+            Breite $ = #1 {\ mm}$\\
+            Höhe $ = #2 {\ mm}$
+          }}}\end{picture}
+  }
 
-\begin{center}
-\textbf{--- Druckgröße kontrollieren! ---}
-\\
-\Messbox{100}{50} % Angabe der Breite/Hoehe in mm
-\\
-\textbf{--- Diese Seite nach dem Druck entfernen! ---}
-\end{center}
+  \begin{center}
+    \textbf{--- Druckgröße kontrollieren! ---}
+    \\
+    \Messbox{100}{50} % Angabe der Breite/Hoehe in mm
+    \\
+    \textbf{--- Diese Seite nach dem Druck entfernen! ---}
+  \end{center}
 
 \fi
 
 \end{document}
-
+% chktex 17 ignore deliberately unmatched numnber of parentheses (there's a single ')' in the preamble)

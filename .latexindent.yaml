@@ -1,0 +1,12 @@
+# format all files in workspace:
+# find . -name "*.tex" -exec latexindent --local --silent --outputfile={} {} \;
+defaultIndent: '  '
+indentPreamble: 1
+specialBeginEnd:
+    # correctly indent `\if` constructs where the command is terminated with {} (e.g. `\ifassignment{}`)
+    ifWithArgs:
+        begin: '\\if[a-zA-Z@]*?\{\}'
+        middle: '\\else'
+        end: '\\fi'
+        lookForThis: 1
+    specialBeforeCommand: 1

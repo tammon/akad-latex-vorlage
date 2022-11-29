@@ -1,64 +1,95 @@
+% Hinweis: Wenn diese Arbeit in einem git repository geschrieben und auf github gesichert wird, besteht die Gefahr,
+%          persönliche Daten (insbesondere Adresse und Matrikelnummer) unabsichtlich zu veröffentlichen.
+% Um dies zu verhindern, sollten kritische Daten in einer oder mehreren separaten Dateien namens "secrets.tex" gesetzt werden (einfach von unten dorthin kopieren, einstellungen.tex muss nicht verändert werden).
+% Diese können entweder im Projektverzeichnis selbst liegen, im Verzeichnis direkt darüber, oder im HOME-Verzeichnis ($HOME oder %USERPROFILE%).
+% Es kann gemischt werden (z.B. Adresse in HOME, Studiengang im Projekt selbst), der jeweils zuerst gesetzte Wert hat Vorrang:
+\IfFileExists{secrets.tex}{\input{secrets.tex}}{}                   % im Projekt-Ordner selbst (leicht zu packen/sichern/transferieren des Projekts, besonders für Dinge wie Titel und Thema des assignments)       % chktex 27 chktex tries to run this regardless of file existance
+\IfFileExists{../secrets.tex}{\input{../secrets.tex}}{}             % direkt oberhalb des Projekt-Ordners (gültig für mehrere nebeneinander liegende Assignments, daher besonders für unveränderliche Daten wie Adresse)       % chktex 27 chktex tries to run this regardless of file existance
+\IfFileExists{\string~/secrets.tex}{\input{\string~/secrets.tex}}{} % aus HOME Verzeichnis (gültig für alle Assignments auf dem Rechner egal wo sie liegen)       % chktex 27 chktex tries to run this regardless of file existance
+% Im Folgenden nun die defaults für alle Werte, die nicht in einer der secrets.tex Dateien gesetzt wurden:
+
+
+%%% Themenbezogene Daten (bei jedem neuen Assignment zu aktualisieren):
+
 %Titel
-\newcommand*{\Titel}{Thema des Assignments} 
-
-%Betreff
-\newcommand*{\Arbeitstyp}{Assignment im Modul ABC01} 
-
-% Akademischer Grad
-\newcommand*{\Grad}{Master of Science (M.Sc.)} 
-
-%Betreuer
-\newcommand*{\Betreuer}{Prof. Dr. Mustermann} 
-
-%Vor- und Nachname
-\newcommand*{\Name}{Max Mustermann}
-
-%Straße und Hausnummer
-\newcommand*{\Strasse}{Musterstr. 1a} 
-
-%Plz und Ort
-\newcommand*{\PlzOrt}{12345 Musterhausen} 
-
-%Immatrikulationsnummer
-\newcommand*{\Immatrikulationsnummer}{123456}
-
-%Bearbeitungszeit
-\newcommand*{\Bearbeitungszeit}{8 Wochen}
-
-%Studiengang
-\newcommand*{\Studiengang}{IT-Management}
-
-%Email 
-\newcommand*{\Email}{max.mustermann@akad.de} 
+\providecommand*{\Titel}{Thema des Assignments}
 
 %PDF Beschreibung
-\newcommand*{\pdfsubject}{Eine kurze Beschreibung, worum es geht}
+\providecommand*{\pdfsubject}{Eine kurze Beschreibung, worum es geht}
+
+%Betreff
+\providecommand*{\Arbeitstyp}{Assignment im Modul ABC01}
+
+%Betreuer
+\providecommand*{\Betreuer}{Prof.~Dr.~Mustermann}
+
+%Firma, in der die Arbeit absolviert wurde (für Sperrvermerk)
+\providecommand*{\Firma}{Mustermann~AG}
+
+%Bearbeitungszeit
+\providecommand*{\Bearbeitungszeit}{8 Wochen}
 
 %PDF Keywords
-\newcommand*{\pdfkeywords}{akad, assignment, meta, information, pdf, hyperref, latex}
-
-%Literaturverzeichnis Titel
-\newcommand*{\prefbiblioname}{Literaturverzeichnis}
+\providecommand*{\pdfkeywords}{akad, assignment, meta, information, pdf, hyperref, latex}
 
 
-%(Wenn nicht benötigt, Zeile mit % auskommentieren oder löschen)
 
-%% Anhang 
-\appendixtrue
+%%% personenbezogene Daten (bleiben gleich von Assignment zu Assignment, sollten vorzugsweise in secrets.tex gesetzt werden, siehe unten):
 
-%% Verzeichnisse 
-%
-%% Abbildungsverzeichnis 
-\listoffigurestrue
-%% Tabellenverzeichnis
-\listoftablestrue
-%% Abkürzungsverzeichnis
-\acronymtrue
-%% Glossar
-\glossarytrue
+%Vor- und Nachname
+\providecommand*{\Name}{Max Mustermann}
 
-%% Formelverzeichnis
-%\listofformelntrue
+%Straße und Hausnummer
+\providecommand*{\Strasse}{Musterstr.~1a}
 
-%% Wird Vorlage für Assignment benutzt
-\assignmenttrue
+%Plz und Ort
+\providecommand*{\PlzOrt}{12345 Musterhausen}
+
+%Email
+\providecommand*{\Email}{max.mustermann@akad.de}
+
+%Immatrikulationsnummer
+\providecommand*{\Immatrikulationsnummer}{123456}
+
+%Studiengang
+\providecommand*{\Studiengang}{IT-Management}
+
+%Akademischer Grad
+\providecommand*{\Grad}{Master~of~Science~(M.~Sc.)}
+%\providecommand*{\Grad}{Master~of~Engineering~(M.~Eng.)}
+%\providecommand*{\Grad}{Bachelor~of~Science~(B.~Sc.)}
+%\providecommand*{\Grad}{Bachelor~of~Engineering~(B.~Eng.)}
+
+
+
+%%% generelle Einstellungen zur Darstellungsform
+% Überschrift des Literaturverzeichnisses
+\providecommand*{\prefbiblioname}{Literaturverzeichnis}
+
+%% Nicht benötigte Zeilen mit % auskommentieren oder löschen:
+
+%% darzustellende Verzeichnisse (können nicht in secrets.tex überschrieben werden):
+\listoffigurestrue{} %% Abbildungsverzeichnis
+\listoftablestrue{}  %% Tabellenverzeichnis
+\acronymtrue{}       %% Abkürzungsverzeichnis
+\glossarytrue{}      %% Glossar
+% \listofformelntrue{} %% Formelverzeichnis
+\appendixtrue{}      %% Anhang
+
+%% Diese Vorlage wird für ein Assignment benutzt (statt für eine Abschlussarbeit)
+\assignmenttrue{}
+
+%% dieser Bericht beinhaltelt sensible Firmendaten und benötigt einen Sperrvermerk:
+%\sperrvermerktrue
+%% Sperrvermerke beziehen sich im Text direkt auf die Art des Berichts. Sollte ein Sperrvermerk notwendig sein, muss hier die richtige Wortwahl definiert werden:
+%% Projektbericht:
+%\providecommand*{\SperrvermerkBausteinEins}{Der nachfolgende Projektbericht}
+%\providecommand*{\SperrvermerkBausteinZwei}{des Projektberichts}
+%\providecommand*{\SperrvermerkBausteinDrei}{Der Projektbericht}
+%% Diplom-/Master-/Bachelor-Arbeit:
+%\providecommand*{\SperrvermerkGrad}{Diplom}
+%\providecommand*{\SperrvermerkGrad}{Master}
+%\providecommand*{\SperrvermerkGrad}{Bachelor}
+%\providecommand*{\SperrvermerkBausteinEins}{Die nachfolgende \SperrvermerkGrad{}-Arbeit}
+%\providecommand*{\SperrvermerkBausteinZwei}{der \SperrvermerkGrad{}-Arbeit}
+%\providecommand*{\SperrvermerkBausteinDrei}{Die \SperrvermerkGrad{}-Arbeit}

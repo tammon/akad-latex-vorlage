@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/universal
+{
+	"name": "Default Linux Universal",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"James-Yu.latex-workshop"
+			],
+			"settings": {
+				"latex-workshop.latex.outDir": "%DIR%/output",
+				"latex-workshop.latexindent.args": [
+					"-c",
+					"%DIR%/",
+					"%TMPFILE%",
+					"--local=%DIR%/.latexindent.yaml"
+				],
+				"latex-workshop.linting.chktex.enabled": true,
+				"latex-workshop.linting.run": "onType",
+				"latex-workshop.linting.chktex.exec.args": [ // should match the definition in github action!
+					"-eall",
+					"-n22",
+					"-n30",
+					"-e16",
+					"-w44",
+					"-q"
+				]
+			}
+		}
+	}
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

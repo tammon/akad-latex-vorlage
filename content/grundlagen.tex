@@ -1,6 +1,6 @@
 \chapter{Grundlagen}
 \section{Text}
-Das ist eine \gls{abk}, die bei der zweiten Verwendung nur noch in der Kurzform \gls{abk} angezeigt wird.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 
 \subsection{Fett}
 \textbf{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.}
@@ -9,27 +9,28 @@ Das ist eine \gls{abk}, die bei der zweiten Verwendung nur noch in der Kurzform 
 \textit{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.}
 
 \subsection{Unterstrichen}
-orem ipsum \underline{dolor} sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod \underline{tempor} invidunt ut labore et dolore magna \underline{aliquyam} erat, sed diam voluptua.
+Lorem ipsum \underline{dolor} sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod \underline{tempor} invidunt ut labore et dolore magna \underline{aliquyam} erat, sed diam voluptua.
 
 \section{Fußnote}
 
-Text mit Fußnote \footnote{Die Fußnote zum Text} 
+Text mit Fußnote\footnote{Die Fußnote zum Text}
 
 \section{Zitate}
 
-Dies ist ein ganz kurzer Beispieltext \footnote{\cite{Baeumle-Courth2004}}. Und noch ein weites Zitat \footnote{\cite{Torvalds2001}}
+Dies ist ein ganz kurzer Beispieltext\footnote{\cite{Richter2016}}. Und noch ein Zitat ohne Fußnote:~\cite{Jacobsen2017}
 \\
-Zitate auf Webseiten \footnote{\cite{gabler:individualsoftware}} \footnote{\cite{gabler:standardsoftware}}
+Zitate auf Webseiten:~\cite{PlutoRed}
 \\
-http://www.literatur-generator.de/
+Einträge ins Literaturverzeichnis (im File literatur.bib) können manuell geschrieben\citationneeded{} oder durch tools erzeugt werden, z.B. \url{http://www.literatur-generator.de}
 
 \section{Aufzählung}
 
 \begin{itemize}
-\item\textit{Punkt 1:} Text
-\item Punkt 2: Text
-\item Punkt 3: \\ Text
+  \item\textit{Punkt 1:} Text
+  \item Punkt 2: \\ Text
 \end{itemize}
 
-\section{Abkürzungen}
-Hier werden \gls{Abk} aus dem Verzeichnis aufgerufen und gleich nochmal die gleiche \gls{Abk}.
+\section{Glossar}
+Hier werden \glspl{abk} aus dem Abkürzungsverzeichnis aufgerufen; bei der ersten Verwendung wird der volle Begriff ausgegeben und mit der Abkürzung in Verbindung gebracht, danach nur noch \emph{\gls{abk}} verwendet.
+
+\gls{lorem} dolor sit amet, consetetur sadipscing elitr.

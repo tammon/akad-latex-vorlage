@@ -6,11 +6,12 @@
 
 \makeatother
 
-\ifassignment
-\geometry{a4paper, left=25mm, right=20mm, top=30mm, bottom=30mm}
+\ifassignment{}
+  \geometry{a4paper, left=25mm, right=20mm, top=30mm, bottom=30mm, head=21.74998pt}
 \else
-\geometry{a4paper, left=45mm, right=20mm, top=30mm, bottom=30mm}
+  \geometry{a4paper, left=45mm, right=20mm, top=30mm, bottom=30mm, head=21.74998pt}
 \fi
+\setlength{\footheight}{21.74998pt}
 
 \renewcommand*{\chapterheadstartvskip}{\vspace*{0\baselineskip}}% Abstand einstellen
 
@@ -19,7 +20,7 @@
 
 \usepackage[automark,headsepline]{scrlayer-scrpage}
 
-\clearpairofpagestyles
+\clearpairofpagestyles{}
 \cfoot[\pagemark]{\pagemark}
 \lehead{\headmark}
 \rohead{\headmark}
